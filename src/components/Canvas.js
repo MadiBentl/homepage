@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Canvas = () => {
+const Canvas = (props) => {
   return (
-    <div className='canvas'></div>
+    <div className='canvas'>
+      {props.children}
+    </div>
   )
 }
 

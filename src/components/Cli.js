@@ -9,7 +9,7 @@ const Cli = () => {
     <div className='cli'>
       <form onSubmit={handleSubmit}>
         <input name='query' />
-        <button type='submit'>Search</button>
+        <button type='submit'>Go</button>
       </form>
     </div>
   )
