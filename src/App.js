@@ -9,7 +9,7 @@ const App = () => {
   return(
     <div className='app'>
       <Canvas>
-        { timer !== {} ? <Timer /> : null}
+        { timer.name !== undefined ? <Timer /> : null}
       </Canvas>
       <Cli />
     </div>

@@ -1,9 +1,16 @@
 import React from 'react'
-
+import { createTimer, deleteTimer, resetTimer } from '../reducers/timer'
+import { useDispatch } from 'react-redux'
 const Cli = () => {
+  const dispatch = useDispatch()
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(event.target.query.value)
+    const query = event.target.query.value.split(' ')
+    //timer
+    if (query[0] === 'create'){
+      dispatch(createTimer(20))
+    }
+
   }
   return(
     <div className='cli'>

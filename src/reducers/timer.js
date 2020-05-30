@@ -3,7 +3,7 @@ const timerReducer = (state = {}, action) => {
   case 'SET_TIMER':
     return {
       initialTime: action.data.time,
-      name: action.data.name || 'Unnamed Timer',
+      name: action.data.name || 'Timer',
       currentTime: action.data.time,
     }
   case 'SET_NAME':
@@ -17,8 +17,8 @@ const timerReducer = (state = {}, action) => {
   }
 }
 
-export const createTimer = (data) => {
-  return ({ type: 'SET_TIMER', data })
+export const createTimer = (time) => {
+  return ({ type: 'SET_TIMER', data: { time } })
 }
 
 export const setName = (name) => {

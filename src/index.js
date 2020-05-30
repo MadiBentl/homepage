@@ -5,11 +5,11 @@ import './styles/index.css'
 import { Provider } from 'react-redux'
 import timerReducer from './reducers/timer'
 import { createStore } from 'redux'
-//import { composeWithDevTools } from 'redux-devtools-extension'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 import App from './App'
 
-const store = createStore(timerReducer)
+const store = createStore(timerReducer, composeWithDevTools())
 console.log(store.getState())
 
 const renderApp = () => {
