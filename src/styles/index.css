@@ -1,0 +1,12 @@
+.cli input {
+  width: 80%;
+  color: red;
+  height: 50%;
+}
+.canvas {
+  height: 80%;
+  border: 2px solid black;
+}
+.app{
+  height: 100vh;
+}
