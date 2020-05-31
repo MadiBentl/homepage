@@ -1,11 +1,14 @@
 .cli input {
   width: 80%;
   color: red;
-  height: 50%;
+  border: none;
+  background: transparent;
+  border-bottom: 3px solid white;
+  padding: 10px;
+  margin: 20px
 }
 .canvas {
-  height: 80%;
-  border: 2px solid black;
+  height: 100%;
   background-size: 100vw;
 }
 .app{

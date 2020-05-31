@@ -10,8 +10,9 @@ const App = () => {
     <div className='app'>
       <Canvas>
         { timer.name !== undefined ? <Timer /> : null}
+        <Cli />
       </Canvas>
-      <Cli />
+
     </div>
   )
 }

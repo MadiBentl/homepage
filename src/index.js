@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.css'
-//import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css'
 import { Provider } from 'react-redux'
 import timerReducer from './reducers/timer'
 import canvasReducer from './reducers/canvas'
