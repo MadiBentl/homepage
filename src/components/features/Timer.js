@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux'
 const now = new Date().getTime()
 
 const Timer = () => {
-  const timerData = useSelector(state => state)
+  const timerData = useSelector(state => state.timer)
+  console.log('ttimer state', timerData)
   const [timeToDisplay, setTimeToDisplay] = useState(timerData.initialTime)
   if (timerData.isOn){
     setInterval(() => {

@@ -6,6 +6,7 @@
 .canvas {
   height: 80%;
   border: 2px solid black;
+  background-size: 100vw;
 }
 .app{
   height: 100vh;

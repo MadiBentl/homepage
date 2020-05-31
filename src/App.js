@@ -5,7 +5,7 @@ import Timer from './components/features/Timer'
 import { useSelector } from 'react-redux'
 
 const App = () => {
-  const timer = useSelector(state => state)
+  const timer = useSelector(state => state.timer)
   return(
     <div className='app'>
       <Canvas>
