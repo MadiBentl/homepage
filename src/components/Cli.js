@@ -1,5 +1,6 @@
 import React from 'react'
 import { createTimer, deleteTimer, toggleTimer } from '../reducers/timer'
+import { createNotepad, deleteNotepad } from '../reducers/notepad'
 import { setWallpaper } from '../reducers/canvas'
 import { useDispatch } from 'react-redux'
 
@@ -29,6 +30,14 @@ const Cli = () => {
     if (query.includes('background') || query.includes('wallpaper')){
       console.log(query[2])
       dispatch(setWallpaper(query[2]))
+    }
+    if (query.includes('notepad')){
+      if (query[0] === 'create'){
+        dispatch(createNotepad())
+      }
+      else if (query[0] === 'delete'){
+        dispatch(deleteNotepad())
+      }
     }
   }
   return(
