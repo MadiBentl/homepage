@@ -4,17 +4,17 @@ const canvasReducer = (state = { img:"https://images.unsplash.com/photo-14718992
   console.log('action', action)
   switch(action.type){
   case 'SET_WALLPAPER':
-    return { ...state, wallpaper: action.img }
+    return { ...state, img: action.img }
   default:
     return state
   }
 }
 
-export const setWallpaper = async (keyword) => {
-  const API_KEY = 'VGtZiGdfOVBE1YFCbuuJXZCzq15k22fUBJAVXUovgcM'
-  const response = await axios.get(`https://api.unsplash.com/search/photos/?query=${keyword}&client_id=${API_KEY}&orientation=landscape`)
-  console.log('wallpaper', response)
-  return dispatch => {
+export const setWallpaper = (keyword) => {
+  return async dispatch => {
+    const API_KEY = 'VGtZiGdfOVBE1YFCbuuJXZCzq15k22fUBJAVXUovgcM'
+    const response = await axios.get(`https://api.unsplash.com/search/photos/?query=${keyword}&client_id=${API_KEY}&orientation=landscape`)
+    console.log('wallpaper', response)
     dispatch({ type: 'SET_WALLPAPER', img: response.data.results[0].urls.full } )
   }
 }

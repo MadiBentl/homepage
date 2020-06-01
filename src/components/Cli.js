@@ -27,6 +27,7 @@ const Cli = () => {
         }
     }
     if (query.includes('background') || query.includes('wallpaper')){
+      console.log(query[2])
       dispatch(setWallpaper(query[2]))
     }
   }
