@@ -1,6 +1,6 @@
 import React from 'react'
 import { createTimer, deleteTimer, toggleTimer } from '../reducers/timer'
-import { createNotepad, deleteNotepad } from '../reducers/notepad'
+import { createNotepad, deleteNotepad, addNote } from '../reducers/notepad'
 import { setWallpaper } from '../reducers/canvas'
 import { useDispatch } from 'react-redux'
 
@@ -27,11 +27,11 @@ const Cli = () => {
           break
         }
     }
-    if (query.includes('background') || query.includes('wallpaper')){
+    else if (query.includes('background') || query.includes('wallpaper')){
       console.log(query[2])
       dispatch(setWallpaper(query[2]))
     }
-    if (query.includes('notepad')){
+    else if (query.includes('notepad')){
       if (query[0] === 'create'){
         dispatch(createNotepad())
       }
@@ -39,11 +39,14 @@ const Cli = () => {
         dispatch(deleteNotepad())
       }
     }
+    else if (query.includes('note')){
+      dispatch(addNote(query.slice(2).join(' ')))
+    }
   }
   return(
     <div className='cli'>
       <form onSubmit={handleSubmit}>
-        <input name='query' />
+        <input name='query' placeholder='create timer 10'/>
         <button type='submit'>Go</button>
       </form>
     </div>
