@@ -17,14 +17,19 @@ const Timer = () => {
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
       var seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
-      const timeLeft = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's '
+      const timeLeft = days + ':' + hours + ':' + minutes + ':' + seconds
       setTimeToDisplay(timeLeft)
     }, 1000)
   }
   return(
-    <div>
+    <div className = 'feature timer'>
       <h1>{ timeToDisplay }</h1>
       <p>{ timerData.name }</p>
+      <div>
+        <i aria-hidden="true" className="pause icon large"></i>
+        <i aria-hidden="true" className="stop icon large"></i>
+        <i aria-hidden="true" className="play icon large"></i>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { createTimer, deleteTimer, resetTimer } from '../reducers/timer'
+import { setWallpaper } from '../reducers/canvas'
 import { useDispatch } from 'react-redux'
 
 const Cli = () => {
@@ -11,6 +12,9 @@ const Cli = () => {
       if (query[0] === 'create'){
         dispatch(createTimer(query[2]))
       }
+    }
+    if (query.includes('background') || query.includes('wallpaper')){
+      dispatch(setWallpaper(query[2]))
     }
   }
   return(

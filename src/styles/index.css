@@ -1,3 +1,5 @@
+* { box-sizing: border-box; }
+
 .cli input {
   width: 90%;
   color: white;
@@ -14,8 +16,17 @@
 input:focus {
   outline: none;
 }
+.features{
+  grid-area: feature
+}
 .feature{
-  grid-area: feature;
+  margin: 15px;
+  background-color: white;
+  display: inline-block;
+  padding: 15px;
+}
+.timer{
+
 }
 .canvas {
   height: 100%;
