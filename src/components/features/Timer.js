@@ -5,7 +5,6 @@ const now = new Date().getTime()
 const Timer = () => {
   const timerData = useSelector(state => state.timer)
   const [timeToDisplay, setTimeToDisplay] = useState(timerData.initialTime)
-
   useEffect(() => {
     let interval = null
     if (timerData.isOn){
@@ -44,3 +43,5 @@ const Timer = () => {
 }
 
 export default Timer
+
+// timer for 10min at 1PM, paused for 2min at 1:05, finished time should be finishedtime + paused
