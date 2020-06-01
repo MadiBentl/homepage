@@ -8,6 +8,8 @@ const timerReducer = (state = {}, action) => {
     }
   case 'SET_NAME':
     return { ...state, name: action.data.name }
+  case 'TOGGLE':
+    return { ...state, isOn: !(state.isOn) }
   case 'DELETE_TIMER':
     return {}
   default:
@@ -21,6 +23,9 @@ export const createTimer = (time) => {
 
 export const setName = (name) => {
   return({ type: 'SET_NAME', data: { name } })
+}
+export const toggleTimer = () => {
+  return({ type: 'TOGGLE' })
 }
 export const deleteTimer = () => {
   return({ type: 'DELETE_TIMER' })

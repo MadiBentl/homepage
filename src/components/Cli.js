@@ -1,5 +1,5 @@
 import React from 'react'
-import { createTimer, deleteTimer, resetTimer } from '../reducers/timer'
+import { createTimer, deleteTimer, toggleTimer } from '../reducers/timer'
 import { setWallpaper } from '../reducers/canvas'
 import { useDispatch } from 'react-redux'
 
@@ -9,9 +9,22 @@ const Cli = () => {
     event.preventDefault()
     const query = event.target.query.value.split(' ')
     if (query.includes('timer')){
-      if (query[0] === 'create'){
-        dispatch(createTimer(query[2]))
-      }
+      switch (query[0]){
+        case 'create':
+          dispatch(createTimer(query[2]))
+          break
+        case 'delete':
+          dispatch(deleteTimer())
+          break
+        case 'start':
+          dispatch(toggleTimer())
+          break
+        case 'pause':
+          dispatch(toggleTimer())
+          break
+        default:
+          break
+        }
     }
     if (query.includes('background') || query.includes('wallpaper')){
       dispatch(setWallpaper(query[2]))
