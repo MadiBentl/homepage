@@ -44,3 +44,7 @@ input:focus {
 .app{
   height: 100vh;
 }
+.text-strike{
+  text-decoration: line-through;
+  color: gray;
+}
