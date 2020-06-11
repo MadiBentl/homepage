@@ -8,6 +8,7 @@ const Canvas = (props) => {
   return (
     <div className='canvas' style={{ backgroundImage : `url(${image})` }}>
       {props.children}
+      <p id='photocredit'>Photo by ___ courtesy of Unsplash</p>
     </div>
   )
 }

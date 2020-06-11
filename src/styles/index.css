@@ -6,6 +6,11 @@ form {
   margin-right: auto;
   text-align: center;
 }
+#photocredit {
+  grid-area: footer;
+  align-self: end;
+  margin: 3px;
+}
 
 .cli input {
   width: 90%;
@@ -18,13 +23,13 @@ form {
   font-size: 25px
 }
 .cli {
-  grid-area: footer;
+  grid-area: cli;
+  align-self: end;
 }
 input:focus {
   outline: none;
 }
 .features{
-  grid-area: feature
 }
 .feature{
   margin: 15px;
@@ -37,17 +42,13 @@ input:focus {
   height: 100%;
   background-size: 100vw;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 75% 25%;
   grid-template-rows: auto;
   grid-template-areas:
-    "header header header header"
-    "feature feature feature feature"
-    "feature feature feature feature"
-    "feature feature feature feature"
-    "feature feature feature feature"
-    "feature feature feature feature"
-    "feature feature feature feature"
-    "footer footer footer footer";
+   "header header"
+   ". sidebar"
+   "cli cli"
+   "footer footer";
 }
 .app{
   height: 100vh;
