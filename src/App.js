@@ -3,6 +3,7 @@ import Cli from './components/Cli'
 import Canvas from './components/Canvas'
 import Timer from './components/features/Timer'
 import Notepad from './components/features/Notepad'
+import Header from './components/Header'
 import { useSelector } from 'react-redux'
 
 const App = () => {
@@ -11,8 +12,9 @@ const App = () => {
   return(
     <div className='app'>
       <Canvas>
-          { timer.name !== undefined ? <Timer /> : null}
-          { notepad.name !== undefined ? <Notepad /> : null}
+        <Header />
+        { timer.name !== undefined ? <Timer /> : null}
+        { notepad.name !== undefined ? <Notepad /> : null}
         <Cli />
       </Canvas>
 

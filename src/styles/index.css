@@ -6,6 +6,15 @@ form {
   margin-right: auto;
   text-align: center;
 }
+.header{
+  grid-area: header;
+  justify-self: stretch;
+}
+.logo{
+  display:block;
+  width: 50px;
+  margin: auto;
+}
 #photocredit {
   grid-area: footer;
   align-self: end;
