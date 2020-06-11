@@ -16,7 +16,7 @@ const Notepad = () => {
   const dispatch = useDispatch()
   const notepadData = useSelector(state => state.notepad)
   return(
-    <div className = 'feature'>
+    <div className = 'feature leftbar'>
       <h1>{ notepadData.name }</h1>
       <ul>
         {notepadData.notes.map(note =>

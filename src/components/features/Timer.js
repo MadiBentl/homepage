@@ -34,7 +34,7 @@ const Timer = () => {
 
 
   return(
-    <div className = 'feature timer'>
+    <div className = 'feature timer sidebar'>
       <h1>{ timeToDisplay }</h1>
       <p>{ timerData.name }</p>
       <div>

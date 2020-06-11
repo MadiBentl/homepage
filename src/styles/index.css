@@ -29,7 +29,8 @@ form {
 input:focus {
   outline: none;
 }
-.features{
+.leftbar{
+  grid-area: leftbar;
 }
 .feature{
   margin: 15px;
@@ -46,7 +47,7 @@ input:focus {
   grid-template-rows: auto;
   grid-template-areas:
    "header header"
-   ". sidebar"
+   "leftbar sidebar"
    "cli cli"
    "footer footer";
 }
@@ -56,4 +57,7 @@ input:focus {
 .text-strike{
   text-decoration: line-through;
   color: gray;
+}
+.sidebar{
+  grid-area: sidebar;
 }
