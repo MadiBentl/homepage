@@ -19,7 +19,7 @@ form {
   grid-area: footer;
   align-self: end;
   margin: 3px;
-  color:white;
+  color:RGB(255, 255, 255, 0.5);
 }
 
 .cli input {
