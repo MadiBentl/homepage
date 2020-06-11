@@ -44,10 +44,10 @@ const Cli = () => {
     }
   }
   return(
-    <div className='cli'>
+    <div className='cli ui transparent'>
       <form onSubmit={handleSubmit}>
         <input name='query' placeholder='example: create timer 10'/>
-        <button type='submit' className='ui button'>Go</button>
+        <button type='submit' className='ui inverted button'>Go</button>
       </form>
     </div>
   )

@@ -10,6 +10,7 @@ form {
   grid-area: footer;
   align-self: end;
   margin: 3px;
+  color:white;
 }
 
 .cli input {
@@ -31,12 +32,19 @@ input:focus {
 }
 .leftbar{
   grid-area: leftbar;
+  margin: 15px;
+  padding: 10px;
+}
+.timer{
+  border-radius: 500px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 30px;
+  margin: auto;
 }
 .feature{
-  margin: 15px;
-  background-color: white;
-  display: inline-block;
-  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
 }
 
 .canvas {
