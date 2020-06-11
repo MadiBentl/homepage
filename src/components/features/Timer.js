@@ -19,7 +19,11 @@ const Timer = () => {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000)
 
         const timeLeft = days + ':' + hours + ':' + minutes + ':' + seconds
-        setTimeToDisplay(timeLeft)
+        if (distance >= 0){
+          setTimeToDisplay(timeLeft)
+        } else {
+          clearInterval(interval)
+        }
       }, 1000)
     }
     else{
