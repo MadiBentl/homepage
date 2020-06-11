@@ -13,12 +13,12 @@ const Timer = () => {
         const finishedTime = (timerData.initialTime * 1000 * 60) + now
         const distance = finishedTime - startingTime
 
-        let days = Math.floor(distance / (1000 * 60 * 60 * 24))
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24)) ? Math.floor(distance / (1000 * 60 * 60 * 24)) + ':' : ''
+        var hours = ('0' + Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).slice(-2)
+        var minutes = ('0' + Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).slice(-2)
+        var seconds = ('0' + Math.floor((distance % (1000 * 60)) / 1000)).slice(-2)
 
-        const timeLeft = days + ':' + hours + ':' + minutes + ':' + seconds
+        const timeLeft = days + hours + ':' + minutes + ':' + seconds
         if (distance >= 0){
           setTimeToDisplay(timeLeft)
         } else {
