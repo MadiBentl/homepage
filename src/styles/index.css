@@ -1,5 +1,12 @@
 * { box-sizing: border-box; }
 
+form {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .cli input {
   width: 90%;
   color: white;
@@ -25,9 +32,7 @@ input:focus {
   display: inline-block;
   padding: 15px;
 }
-.timer{
 
-}
 .canvas {
   height: 100%;
   background-size: 100vw;
@@ -36,6 +41,9 @@ input:focus {
   grid-template-rows: auto;
   grid-template-areas:
     "header header header header"
+    "feature feature feature feature"
+    "feature feature feature feature"
+    "feature feature feature feature"
     "feature feature feature feature"
     "feature feature feature feature"
     "feature feature feature feature"

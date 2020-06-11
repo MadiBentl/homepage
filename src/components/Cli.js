@@ -46,8 +46,8 @@ const Cli = () => {
   return(
     <div className='cli'>
       <form onSubmit={handleSubmit}>
-        <input name='query' placeholder='create timer 10'/>
-        <button type='submit'>Go</button>
+        <input name='query' placeholder='example: create timer 10'/>
+        <button type='submit' className='ui button'>Go</button>
       </form>
     </div>
   )

@@ -4,8 +4,9 @@ import { toggleNoteStatus } from '../../reducers/notepad'
 
 const Note = ({ note, handleClick }) => {
   return(
-    <li onClick = {handleClick} className={note.complete ? 'text-strike' : null}
->
+    <li
+      onClick = {handleClick}
+      className={note.complete ? 'text-strike' : null} >
       {note.content}
     </li>
   )
@@ -15,7 +16,7 @@ const Notepad = () => {
   const dispatch = useDispatch()
   const notepadData = useSelector(state => state.notepad)
   return(
-    <div>
+    <div className = 'feature'>
       <h1>{ notepadData.name }</h1>
       <ul>
         {notepadData.notes.map(note =>
