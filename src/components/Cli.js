@@ -25,7 +25,7 @@ const Cli = () => {
           break
         default:
           break
-        }
+      }
     }
     else if (query.includes('background') || query.includes('wallpaper')){
       console.log(query[2])
