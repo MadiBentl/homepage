@@ -1,10 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
 import Cli from './components/Cli'
 import Canvas from './components/Canvas'
 import Timer from './components/features/Timer'
 import Notepad from './components/features/Notepad'
 import Header from './components/Header'
-import { useSelector } from 'react-redux'
 
 const App = () => {
   const timer = useSelector(state => state.timer)

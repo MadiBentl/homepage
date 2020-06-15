@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleTimer } from '../../reducers/timer'
+
 const now = new Date().getTime()
 
 const Timer = () => {
   const timerData = useSelector(state => state.timer)
   const [timeToDisplay, setTimeToDisplay] = useState(timerData.initialTime)
+  const dispatch = useDispatch()
+
+  let interval = null
+
   useEffect(() => {
-    let interval = null
     if (timerData.isOn){
       interval = setInterval(() => {
         const startingTime = new Date().getTime()
@@ -32,14 +37,26 @@ const Timer = () => {
     return () => clearInterval(interval)
   }, [timerData.isOn, timeToDisplay])
 
-
+  const handleStop = () => {
+    dispatch(toggleTimer())
+    setTimeToDisplay('0:00:00')
+    clearInterval(interval)
+  }
   return(
     <div className = 'feature timer sidebar'>
       <h1>{ timeToDisplay }</h1>
       <p>{ timerData.name }</p>
       <div>
-        <i aria-hidden="true" className="pause icon large"></i>
-        <i aria-hidden="true" className="stop icon large"></i>
+        <i
+          aria-hidden="true"
+          className="pause icon large"
+          onClick={() => clearInterval(interval) }
+        ></i>
+        <i
+          aria-hidden="true"
+          className="stop icon large"
+          onClick={() => handleStop()}
+        ></i>
         <i aria-hidden="true" className="play icon large"></i>
       </div>
     </div>

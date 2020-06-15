@@ -1,19 +1,19 @@
 const timerReducer = (state = {}, action) => {
   switch(action.type){
-  case 'SET_TIMER':
-    return {
-      initialTime: action.data.time,
-      name: action.data.name || 'Timer',
-      isOn: true
-    }
-  case 'SET_NAME':
-    return { ...state, name: action.data.name }
-  case 'TOGGLE':
-    return { ...state, isOn: !(state.isOn) }
-  case 'DELETE_TIMER':
-    return {}
-  default:
-    return state
+    case 'SET_TIMER':
+      return {
+        initialTime: action.data.time,
+        name: action.data.name || 'Timer',
+        isOn: true
+      }
+    case 'SET_NAME':
+      return { ...state, name: action.data.name }
+    case 'TOGGLE':
+      return { ...state, isOn: !(state.isOn) }
+    case 'DELETE_TIMER':
+      return {}
+    default:
+      return state
   }
 }
 
