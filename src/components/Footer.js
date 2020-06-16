@@ -11,6 +11,7 @@ const Footer = (props) => {
         <i aria-hidden="true" className="hourglass half icon large"></i>
         <i aria-hidden="true" className="sun icon large"></i>
         <i aria-hidden="true" className="pencil alternative icon large"></i>
+        <i aria-hidden="true" className="history icon large"></i>
         <i aria-hidden="true" className="cog icon large"></i>
       </div>
     </div>
