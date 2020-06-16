@@ -8,27 +8,22 @@ import { toggleTask } from '../../reducers/tasklist'
 const Task = ({ task }) => {
   const dispatch = useDispatch()
   return (
-    <li>
-      <div className = 'ui Checkbox'>
-        <input type='checkbox' onClick = {() => dispatch(toggleTask(task.id))}/>
-        <label name={`${task.content}`}> {task.content}</label>
-      </div>
-    </li>
+    <div className = 'ui checkbox'>
+      <input type='checkbox' onClick = {() => dispatch(toggleTask(task.id))}/>
+      <label name={`${task.content}`}> {task.content}</label>
+    </div>
   )
 }
-
 
 const TaskList = () => {
   const taskData = useSelector(state => state.taskList)
 
   return(
-    <div className='feature'>
+    <div className='feature tasklist'>
       <h3>TaskList for {taskData.name}</h3>
-      <ul>
-        {taskData.tasks.map(task => {
-          return <Task key={task.id} task={task} />
-        })}
-      </ul>
+      {taskData.tasks.map(task => {
+        return <Task key={task.id} task={task} />
+      })}
     </div>
   )
 }
