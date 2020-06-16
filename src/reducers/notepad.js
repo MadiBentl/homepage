@@ -4,38 +4,38 @@ const generateId = () => {
 
 const notepadReducer = (state = {}, action) => {
   switch(action.type){
-  case 'CREATE_NOTEPAD':
-    return {
-      name: 'Notepad',
-      visible: true,
-      notes: []
-    }
-  case 'DELETE_NOTEPAD':
-    return {}
-  case 'HIDE_NOTEPAD':
-    return { ...state, visible: false }
-  case 'SHOW_NOTEPAD':
-    return { ...state, visible: true }
-  case 'ADD_NOTE':
-    return { ...state, notes: state.notes.concat({
-      content: action.data.content,
-      complete: false,
-      id: generateId()
-    }) }
-  case 'TOGGLE_STATUS':
-    const noteToToggle = state.notes.find(n => n.id === action.data.id)
-    const toggledNote = {
-      ...noteToToggle,
-      complete: !noteToToggle.complete
-    }
-    console.log('toggled', toggledNote)
-    const newNotes = state.notes.map(n =>
-      n.id === action.data.id ? toggledNote : n
-    )
-    console.log(newNotes)
-    return { ...state, notes: newNotes }
-  default:
-    return state
+    case 'CREATE_NOTEPAD':
+      return {
+        name: 'Notepad',
+        visible: true,
+        notes: []
+      }
+    case 'DELETE_NOTEPAD':
+      return {}
+    case 'HIDE_NOTEPAD':
+      return { ...state, visible: false }
+    case 'SHOW_NOTEPAD':
+      return { ...state, visible: true }
+    case 'ADD_NOTE':
+      return { ...state, notes: state.notes.concat({
+        content: action.data.content,
+        complete: false,
+        id: generateId()
+      }) }
+    case 'TOGGLE_STATUS':
+      const noteToToggle = state.notes.find(n => n.id === action.data.id)
+      const toggledNote = {
+        ...noteToToggle,
+        complete: !noteToToggle.complete
+      }
+      console.log('toggled', toggledNote)
+      const newNotes = state.notes.map(n =>
+        n.id === action.data.id ? toggledNote : n
+      )
+      console.log(newNotes)
+      return { ...state, notes: newNotes }
+    default:
+      return state
   }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { createTimer, deleteTimer, toggleTimer } from '../reducers/timer'
 import { createNotepad, deleteNotepad, addNote } from '../reducers/notepad'
+import { createTasklist } from '../reducers/tasklist'
 import { setWallpaper } from '../reducers/canvas'
 import { useDispatch } from 'react-redux'
 
@@ -41,6 +42,9 @@ const Cli = () => {
     }
     else if (query.includes('note')){
       dispatch(addNote(query.slice(2).join(' ')))
+    }
+    else if (query.includes('tasklist')){
+      dispatch(createTasklist())
     }
   }
   return(
