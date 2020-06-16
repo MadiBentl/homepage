@@ -15,12 +15,6 @@ form {
   width: 50px;
   margin: auto;
 }
-#photocredit {
-  grid-area: footer;
-  align-self: end;
-  margin: 3px;
-  color:RGB(255, 255, 255, 0.5);
-}
 .tasklist{
   padding: 10px;
   grid-area: leftbar;
@@ -59,6 +53,18 @@ input:focus {
   color: white;
   justify-self:start;
 
+}
+#footer{
+  grid-area: footer;
+  align-self: end;
+  margin: 3px;
+  color:RGB(255, 255, 255, 0.5);
+}
+#feature-links{
+  float: right
+}
+#photocredit {
+  float: left
 }
 .canvas {
   height: 100% !important;
