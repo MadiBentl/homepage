@@ -4,12 +4,14 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-const Task = (task) => {
+const Task = ({ task }) => {
+  console.log(task
+  )
   return (
-    <li key={task.id}>
+    <li>
       <div className = 'ui Checkbox'>
         <input type='checkbox' />
-        <label>task.content</label>
+        <label name={`${task.content}`}>{task.content}</label>
       </div>
     </li>
   )
@@ -19,7 +21,7 @@ const Task = (task) => {
 const TaskList = () => {
 
   const taskData = useSelector(state => state.taskList)
-  console.log(taskData.name)
+  console.log(taskData)
   return(
     <div className='feature'>
       <h3>TaskList for {taskData.name}</h3>
