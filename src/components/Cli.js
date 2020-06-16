@@ -29,8 +29,11 @@ const Cli = () => {
       }
     }
     else if (query.includes('background') || query.includes('wallpaper')){
-      console.log(query[2])
-      dispatch(setWallpaper(query[2]))
+      if(query[2]){
+        dispatch(setWallpaper(query[2]))
+      }else{
+        dispatch(setWallpaper())
+      }
     }
     else if (query.includes('notepad')){
       if (query[0] === 'create'){
