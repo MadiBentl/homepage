@@ -27,19 +27,16 @@ const taskList = (state = {}, action) => {
         complete: false,
         id: generateId()
       }) }
-    case 'TOGGLE_STATUS':
-      const taskToToggle = state.tasks.find(n => n.id === action.data.id)
-      const toggledTask = {
-        ...taskToToggle,
-        complete: !taskToToggle.complete
-      }
-      console.log('toggled', toggledTask)
-      const newTasks = state.tasks.map(n =>
-        n.id === action.data.id ? toggledTask : n
-      )
-      console.log(newTasks)
-      return { ...state, tasks: newTasks }
+    case 'TOGGLE_TASK_STATUS':
+      return { ...state, tasks: state.tasks.map(task => {
+        if (task.id === action.data.id) {
+          return { ...task, complete: !task.complete }
+        }else{
+          return task
+        }
+      }) }
     default:
+      console.log('default')
       return state
   }
 }
@@ -59,8 +56,8 @@ export const showTasklist = () => {
 export const addTask = (content) => {
   return({ type: 'ADD_TASK', data:{ content } })
 }
-export const toggleTaskStatus = (id) => {
-  return({ type: 'TOGGLE_STATUS', data:{ id } })
+export const toggleTask = (id) => {
+  return({ type: 'TOGGLE_TASK_STATUS', data:{ id } })
 }
 
 export default taskList

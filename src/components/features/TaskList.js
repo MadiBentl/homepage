@@ -3,15 +3,15 @@
 
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { toggleTask } from '../../reducers/tasklist'
 
 const Task = ({ task }) => {
-  console.log(task
-  )
+  const dispatch = useDispatch()
   return (
     <li>
       <div className = 'ui Checkbox'>
-        <input type='checkbox' />
-        <label name={`${task.content}`}>{task.content}</label>
+        <input type='checkbox' onClick = {() => dispatch(toggleTask(task.id))}/>
+        <label name={`${task.content}`}> {task.content}</label>
       </div>
     </li>
   )
@@ -19,9 +19,8 @@ const Task = ({ task }) => {
 
 
 const TaskList = () => {
-
   const taskData = useSelector(state => state.taskList)
-  console.log(taskData)
+
   return(
     <div className='feature'>
       <h3>TaskList for {taskData.name}</h3>
