@@ -6,12 +6,16 @@ const Footer = (props) => {
       <div id='photo-source'>
         <p id='photocredit'>Photo by {props.source} courtesy of Unsplash</p>
       </div>
-      <div id='feature-links'>
-        <i aria-hidden="true" className="tasks icon large"></i>
-        <i aria-hidden="true" className="hourglass half icon large"></i>
-        <i aria-hidden="true" className="sun icon large"></i>
-        <i aria-hidden="true" className="pencil alternative icon large"></i>
-        <i aria-hidden="true" className="history icon large"></i>
+      <div id='feature-links-container'>
+        <div id='feature-links'>
+          <i aria-hidden="true" className="tasks icon large"></i>
+          <i aria-hidden="true" className="hourglass half icon large"></i>
+          <i aria-hidden="true" className="sun icon large"></i>
+          <i aria-hidden="true" className="pencil alternative icon large"></i>
+          <i aria-hidden="true" className="history icon large"></i>
+        </div>
+      </div>
+      <div id='settings-link'>
         <i aria-hidden="true" className="cog icon large"></i>
       </div>
     </div>

@@ -60,11 +60,24 @@ input:focus {
   margin: 3px;
   color:RGB(255, 255, 255, 0.5);
 }
-#feature-links{
-  float: right
+#feature-links-container{
+  display: inline-block;
+  width: 33%
 }
-#photocredit {
-  float: left
+#feature-links{
+  text-align: center;
+}
+#settings-link{
+  display: inline-block;
+  width: 33%;
+  float: right;
+}
+#settings-link i.icon{
+  float: right;
+}
+#photo-source {
+  display: inline-block;
+  width: 33%
 }
 .canvas {
   height: 100% !important;
