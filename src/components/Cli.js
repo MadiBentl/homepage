@@ -8,8 +8,8 @@ import { setWallpaper } from '../reducers/canvas'
 import { useDispatch } from 'react-redux'
 
 const items = [
-  { value: 'apple' },
-  { value: 'pear' },
+  { value: 'change background' },
+  { value: 'randomize background' },
   { value: 'orange' },
   { value: 'grape' },
   { value: 'banana' },
@@ -78,6 +78,7 @@ const OldCli = () => {
 }
 
 const Cli = () => {
+  const dispatch = useDispatch()
   return(<Downshift
     onChange={selection => {
       if (selection) {
@@ -98,9 +99,11 @@ const Cli = () => {
       highlightedIndex,
       selectedItem,
     }) => (
-      <div>
-        <label {...getLabelProps()}>Enter a fruit</label>
-        <input {...getInputProps()} />
+      <div className='cli ui transparent'>
+        <form>
+          <input name='query' placeholder='example: create timer 10' {...getInputProps()} />
+          <button type='submit' className='ui inverted button'>Go</button>
+        </form>
         <ul {...getMenuProps()}>
           {isOpen
             ? items
