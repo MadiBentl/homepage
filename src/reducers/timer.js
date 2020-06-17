@@ -1,4 +1,11 @@
-const timerReducer = (state = {visible: false}, action) => {
+const initialState = {
+  initialTime: '00:00',
+  name: 'Unset Timer',
+  isOn: false,
+  visible: false
+}
+
+const timerReducer = (state = initialState, action) => {
   switch(action.type){
     case 'SET_TIMER':
       return {
@@ -10,7 +17,7 @@ const timerReducer = (state = {visible: false}, action) => {
     case 'SET_NAME':
       return { ...state, name: action.data.name }
     case 'TOGGLE':
-      return { ...state, isOn: !(state.isOn) }
+      return { ...state, visible: !(state.visible) }
     case 'DELETE_TIMER':
       return {}
     default:

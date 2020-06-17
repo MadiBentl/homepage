@@ -1,7 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleTimer } from '../reducers/timer'
 
 const Footer = (props) => {
+
+  const dispatch = useDispatch()
+
   const status = useSelector(state => {
     return {
       tasklist: state.taskList.visible,
@@ -21,6 +25,7 @@ const Footer = (props) => {
           <i
             aria-hidden="true"
             className={`hourglass half icon large ${status.timer ? 'active-feature' : ''}` }
+            onClick={() => dispatch(toggleTimer())}
           ></i>
           <i aria-hidden="true" className="sun icon large"></i>
           <i aria-hidden="true" className="pencil alternative icon large"></i>
