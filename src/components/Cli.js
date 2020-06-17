@@ -1,11 +1,21 @@
 import React from 'react'
+import Downshift from 'downshift'
+
 import { createTimer, deleteTimer, toggleTimer } from '../reducers/timer'
 import { createNotepad, deleteNotepad, addNote } from '../reducers/notepad'
 import { createTasklist, addTask } from '../reducers/tasklist'
 import { setWallpaper } from '../reducers/canvas'
 import { useDispatch } from 'react-redux'
 
-const Cli = () => {
+const items = [
+  { value: 'apple' },
+  { value: 'pear' },
+  { value: 'orange' },
+  { value: 'grape' },
+  { value: 'banana' },
+]
+
+const OldCli = () => {
   const dispatch = useDispatch()
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -65,5 +75,57 @@ const Cli = () => {
       </form>
     </div>
   )
+}
+
+const Cli = () => {
+  return(<Downshift
+    onChange={selection => {
+      if (selection) {
+        alert(`You selected ${selection.value}`)
+      } else {
+        alert('selection cleared')
+      }
+    }}
+    itemToString={item => (item ? item.value : '')}
+  >
+    {({
+      getInputProps,
+      getItemProps,
+      getLabelProps,
+      getMenuProps,
+      isOpen,
+      inputValue,
+      highlightedIndex,
+      selectedItem,
+    }) => (
+      <div>
+        <label {...getLabelProps()}>Enter a fruit</label>
+        <input {...getInputProps()} />
+        <ul {...getMenuProps()}>
+          {isOpen
+            ? items
+              .filter(item => !inputValue || item.value.includes(inputValue))
+              .map((item, index) => (
+                <li
+                  {...getItemProps({
+                    key: item.value,
+                    index,
+                    item,
+                    style: {
+                      backgroundColor:
+                          highlightedIndex === index ? 'lightgray' : null,
+                      fontWeight: selectedItem === item ? 'bold' : 'normal',
+                    },
+                  })}
+                >
+                  {item.value}
+                </li>
+              ))
+            : null}
+        </ul>
+      </div>
+    )}
+  </Downshift>
+)
 }
 export default Cli
