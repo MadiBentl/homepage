@@ -33,6 +33,16 @@ form {
   grid-area: cli;
   align-self: end;
 }
+.divided.list .item {
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center !important;
+}
+.cli.divided.list{
+  width: 80%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
 input:focus {
   outline: none;
 }

@@ -10,9 +10,9 @@ import { useDispatch } from 'react-redux'
 const items = [
   { value: 'change background' },
   { value: 'randomize background' },
-  { value: 'orange' },
-  { value: 'grape' },
-  { value: 'banana' },
+  { value: 'set timer' },
+  { value: 'delete timer' },
+  { value: 'hide timer' },
 ]
 
 const OldCli = () => {
@@ -79,61 +79,64 @@ const OldCli = () => {
 
 const Cli = () => {
   const dispatch = useDispatch()
-  return(<Downshift
-    onChange={selection => {
-      if (selection) {
-        switch(selection.value){
-          case 'randomize background':
-            dispatch(setWallpaper())
-            break
-          default:
-            break
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+  return(
+    <Downshift
+      onChange={selection => {
+        if (selection) {
+          switch(selection.value){
+            case 'randomize background':
+              dispatch(setWallpaper())
+              break
+            default:
+              break
+          }
         }
-      } else {
-        alert('selection cleared')
-      }
-    }}
-    itemToString={item => (item ? item.value : '')}
-  >
-    {({
-      getInputProps,
-      getItemProps,
-      getMenuProps,
-      isOpen,
-      inputValue,
-      highlightedIndex,
-      selectedItem,
-    }) => (
-      <div className='cli ui transparent'>
-        <form>
-          <input name='query' placeholder='example: create timer 10' {...getInputProps()} />
-          <button type='submit' className='ui inverted button'>Go</button>
-        </form>
-        <ul {...getMenuProps()}>
-          {isOpen
-            ? items
-              .filter(item => !inputValue || item.value.includes(inputValue))
-              .map((item, index) => (
-                <li
-                  {...getItemProps({
-                    key: item.value,
-                    index,
-                    item,
-                    style: {
-                      backgroundColor:
-                          highlightedIndex === index ? 'lightgray' : null,
-                      fontWeight: selectedItem === item ? 'bold' : 'normal',
-                    },
-                  })}
-                >
-                  {item.value}
-                </li>
-              ))
-            : null}
-        </ul>
-      </div>
-    )}
-  </Downshift>
-)
+      }}
+      itemToString={item => (item ? item.value : '')}
+    >
+      {({
+        getInputProps,
+        getItemProps,
+        getMenuProps,
+        isOpen,
+        inputValue,
+        highlightedIndex,
+        selectedItem,
+      }) => (
+        <div className='cli ui transparent'>
+          <div className='ui relaxed divided list' {...getMenuProps()}>
+            {isOpen
+              ? items
+                .filter(item => !inputValue || item.value.includes(inputValue))
+                .map((item, index) => (
+                  <div className='item'
+                    key={ item.value }
+                    {...getItemProps({
+                      index,
+                      item,
+                      style: {
+                        backgroundColor:
+                        highlightedIndex === index ? 'lightgray' : null,
+                        fontWeight: selectedItem === item ? 'bold' : 'normal',
+                      },
+                    })}
+                  >
+                    {item.value}
+                  </div>
+                ))
+              : null}
+          </div>
+          <form onSubmit = {handleSubmit}>
+            <input name='query' placeholder='example: create timer 10' {...getInputProps()} />
+            <button type='submit' className='ui inverted button'>Go</button>
+          </form>
+
+        </div>
+      )}
+    </Downshift>
+  )
 }
 export default Cli
