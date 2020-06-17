@@ -91,8 +91,13 @@ const Cli = () => {
               dispatch(setWallpaper())
               break
             case 'set timer':
-              console.log('setting')
               dispatch(createTimer(20))
+              break
+            case 'hide timer':
+              dispatch(toggleTimer())
+              break
+            case 'show timer':
+              dispatch(toggleTimer())
               break
             default:
               break
