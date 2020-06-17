@@ -82,7 +82,13 @@ const Cli = () => {
   return(<Downshift
     onChange={selection => {
       if (selection) {
-        alert(`You selected ${selection.value}`)
+        switch(selection.value){
+          case 'randomize background':
+            dispatch(setWallpaper())
+            break
+          default:
+            break
+        }
       } else {
         alert('selection cleared')
       }
@@ -92,7 +98,6 @@ const Cli = () => {
     {({
       getInputProps,
       getItemProps,
-      getLabelProps,
       getMenuProps,
       isOpen,
       inputValue,
