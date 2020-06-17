@@ -2,7 +2,7 @@ const generateId = () => {
   return Math.round(Math.random() * 9999999999)
 }
 
-const notepadReducer = (state = {}, action) => {
+const notepadReducer = (state = { visible: false }, action) => {
   switch(action.type){
     case 'CREATE_NOTEPAD':
       return {

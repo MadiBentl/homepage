@@ -7,7 +7,7 @@ const getDate = () => {
   return date.split(' ').slice(0, 3).join(' ')
 }
 
-const taskList = (state = {}, action) => {
+const taskList = (state = { visible: false }, action) => {
   switch(action.type){
     case 'CREATE_TASKLIST':
       return {

@@ -1,10 +1,11 @@
-const timerReducer = (state = {}, action) => {
+const timerReducer = (state = {visible: false}, action) => {
   switch(action.type){
     case 'SET_TIMER':
       return {
         initialTime: action.data.time,
         name: action.data.name || 'Timer',
-        isOn: true
+        isOn: true,
+        visible: true
       }
     case 'SET_NAME':
       return { ...state, name: action.data.name }

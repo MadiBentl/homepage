@@ -21,7 +21,6 @@ const App = () => {
         { notepad.name !== undefined ? <Notepad /> : null}
         <Cli />
       </Canvas>
-
     </div>
   )
 }

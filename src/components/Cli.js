@@ -90,6 +90,10 @@ const Cli = () => {
             case 'randomize background':
               dispatch(setWallpaper())
               break
+            case 'set timer':
+              console.log('setting')
+              dispatch(createTimer(20))
+              break
             default:
               break
           }
