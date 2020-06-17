@@ -11,6 +11,7 @@ const timerReducer = (state = initialState, action) => {
       return {
         initialTime: action.data.time,
         name: action.data.name || 'Timer',
+        timeWhenCreated: new Date().getTime(),
         isOn: true,
         visible: true
       }

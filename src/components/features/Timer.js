@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleTimer } from '../../reducers/timer'
 
-const now = new Date().getTime()
 
 const Timer = () => {
   const timerData = useSelector(state => state.timer)
@@ -10,6 +9,7 @@ const Timer = () => {
   const dispatch = useDispatch()
 
   let interval = null
+  const now = timerData.timeWhenCreated
 
   useEffect(() => {
     if (timerData.isOn){

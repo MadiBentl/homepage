@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Downshift from 'downshift'
 
 import { createTimer, deleteTimer, toggleTimer } from '../reducers/timer'
@@ -11,6 +11,7 @@ const items = [
   { value: 'change background' },
   { value: 'randomize background' },
   { value: 'set timer' },
+  { value: 'show timer' },
   { value: 'delete timer' },
   { value: 'hide timer' },
 ]
@@ -91,6 +92,7 @@ const Cli = () => {
               dispatch(setWallpaper())
               break
             case 'set timer':
+              console.log('selection', selection)
               dispatch(createTimer(20))
               break
             case 'hide timer':
