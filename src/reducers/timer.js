@@ -1,5 +1,5 @@
 const initialState = {
-  initialTime: '00:00',
+  initialTime: 0,
   name: 'Unset Timer',
   isOn: false,
   visible: false
