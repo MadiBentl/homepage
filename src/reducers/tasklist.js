@@ -7,20 +7,20 @@ const getDate = () => {
   return date.split(' ').slice(0, 3).join(' ')
 }
 
-const taskList = (state = { visible: false }, action) => {
+const initialState = {
+  name: getDate(),
+  visible: false,
+  tasks: []
+}
+
+const taskList = (state = initialState, action) => {
   switch(action.type){
     case 'CREATE_TASKLIST':
-      return {
-        name: getDate(),
-        visible: true,
-        tasks: []
-      }
+      return { ...state, visible: true }
     case 'DELETE_TASKLIST':
       return {}
-    case 'HIDE_TASKLIST':
-      return { ...state, visible: false }
-    case 'SHOW_TASKLIST':
-      return { ...state, visible: true }
+    case 'TOGGLE_TASKLIST':
+      return { ...state, visible: !state.visible }
     case 'ADD_TASK':
       return { ...state, tasks: state.tasks.concat({
         content: action.data.content,
@@ -47,11 +47,8 @@ export const createTasklist = () => {
 export const deleteTasklist = () => {
   return({ type: 'DELETE_TASKLIST' })
 }
-export const hideTasklist = () => {
-  return({ type: 'HIDE_TASKLIST' })
-}
-export const showTasklist = () => {
-  return({ type: 'SHOW_TASKLIST' })
+export const toggleTasklist = () => {
+  return({ type: 'TOGGLE_TASKLIST' })
 }
 export const addTask = (content) => {
   return({ type: 'ADD_TASK', data:{ content } })

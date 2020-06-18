@@ -14,6 +14,7 @@ const items = [
   { value: 'show timer' },
   { value: 'delete timer' },
   { value: 'hide timer' },
+  { value: 'create tasklist' }
 ]
 
 const OldCli = () => {
@@ -100,6 +101,9 @@ const Cli = () => {
               break
             case 'show timer':
               dispatch(toggleTimer())
+              break
+            case 'create tasklist':
+              dispatch(createTasklist())
               break
             default:
               break

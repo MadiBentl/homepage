@@ -14,7 +14,6 @@ const Task = ({ task }) => {
 
 const TaskList = () => {
   const taskData = useSelector(state => state.taskList)
-
   return(
     <div className='feature tasklist'>
       <h3>TaskList for {taskData.name}</h3>

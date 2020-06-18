@@ -16,7 +16,7 @@ const App = () => {
     <div className='app'>
       <Canvas>
         <Header />
-        { taskList.name !== undefined ? <TaskList /> : null}
+        { taskList.visible ? <TaskList /> : null}
         { timer.visible ? <Timer /> : null}
         { notepad.name !== undefined ? <Notepad /> : null}
         <Cli />
