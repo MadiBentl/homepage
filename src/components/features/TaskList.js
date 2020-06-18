@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleTask } from '../../reducers/tasklist'
+import { toggleTask, addTask } from '../../reducers/tasklist'
 
 const Task = ({ task }) => {
   const dispatch = useDispatch()
@@ -13,13 +13,23 @@ const Task = ({ task }) => {
 }
 
 const NewTask = ({ setNewTask, newTask }) => {
+
+  const dispatch = useDispatch()
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    dispatch(addTask(newTask.content))
+    setNewTask({ active: false, content: '' })
+  }
   return (
     <div className = 'ui transparent checkbox input'>
       <input type='checkbox' />
       <label>
-        <div className = 'ui transparent input'>
-          <input value={newTask.content} placeholder='add new task' onChange = {(event) => setNewTask({ active: true, content: event.target.value })}/>
-        </div>
+        <form onSubmit={(event) => handleSubmit(event, newTask.content) }>
+          <div className = 'ui transparent input'>
+            <input value={newTask.content} placeholder='add new task' onChange = {(event) => setNewTask({ active: true, content: event.target.value })}/>
+          </div>
+        </form>
       </label>
     </div>
   )
@@ -27,9 +37,15 @@ const NewTask = ({ setNewTask, newTask }) => {
 
 const TaskList = () => {
   const taskData = useSelector(state => state.taskList)
+  const dispatch = useDispatch()
   const [newTask, setNewTask] = useState({ active: false, content: '' })
+
   const handleClick = () => {
     setNewTask({ ...newTask, active: true })
+  }
+  const handleSubmit = (event, content) => {
+    event.preventDefault()
+    dispatch(addTask(content))
   }
   return(
     <div
@@ -41,7 +57,7 @@ const TaskList = () => {
         return <Task key={task.id} task={task} />
       })}
       {newTask.active ?
-        <NewTask setNewTask={setNewTask} newTask={newTask}/>
+        <NewTask handleSubmit={handleSubmit} setNewTask={setNewTask} newTask={newTask}/>
         : null}
     </div>
   )
