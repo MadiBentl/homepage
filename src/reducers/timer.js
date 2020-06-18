@@ -9,18 +9,24 @@ const timerReducer = (state = initialState, action) => {
   switch(action.type){
     case 'SET_TIMER':
       return {
-        initialTime: action.data.time,
+        initialTime: (action.data.time * 60000),
         name: action.data.name || 'Timer',
         timeWhenCreated: new Date().getTime(),
         isOn: true,
         visible: true
       }
+    case 'STOP_TIMER':
+      return { ...state, isOn: !state.isOn }
     case 'SET_NAME':
       return { ...state, name: action.data.name }
     case 'TOGGLE':
       return { ...state, visible: !(state.visible) }
+    case 'RESUME_TIMER':
+      return { ...state, isOn: true, timeWhenCreated: new Date().getTime() }
+    case 'PAUSE_TIMER':
+      return { ...state, isOn: false, initialTime: action.data.timeRemaining }
     case 'DELETE_TIMER':
-      return {}
+      return initialState
     default:
       return state
   }
@@ -38,5 +44,14 @@ export const toggleTimer = () => {
 }
 export const deleteTimer = () => {
   return({ type: 'DELETE_TIMER' })
+}
+export const stopTimer = () => {
+  return({ type: 'STOP_TIMER' })
+}
+export const resumeTimer = () => {
+  return ({ type: 'RESUME_TIMER' })
+}
+export const pauseTimer = (timeRemaining) => {
+  return ({ type: 'PAUSE_TIMER', data: { timeRemaining } })
 }
 export default timerReducer
