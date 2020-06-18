@@ -5,9 +5,9 @@ import { toggleTask, addTask } from '../../reducers/tasklist'
 const Task = ({ task }) => {
   const dispatch = useDispatch()
   return (
-    <div className = 'ui checkbox'>
+    <div className = 'ui checkbox task'>
       <input type='checkbox' onClick = {() => dispatch(toggleTask(task.id))}/>
-      <label name={`${task.content}`}> {task.content}</label>
+      <label className={task.complete ? 'text-strike' : null} name={`${task.content}`}> {task.content}</label>
     </div>
   )
 }
@@ -22,7 +22,7 @@ const NewTask = ({ setNewTask, newTask }) => {
     setNewTask({ active: false, content: '' })
   }
   return (
-    <div className = 'ui transparent checkbox input'>
+    <div className = 'ui transparent checkbox input task'>
       <input type='checkbox' />
       <label>
         <form onSubmit={(event) => handleSubmit(event, newTask.content) }>
