@@ -13,7 +13,6 @@ const Task = ({ task }) => {
 }
 
 const NewTask = ({ setNewTask, newTask }) => {
-
   const dispatch = useDispatch()
 
   const handleSubmit = (event) => {
@@ -22,7 +21,7 @@ const NewTask = ({ setNewTask, newTask }) => {
     setNewTask({ active: false, content: '' })
   }
   return (
-    <div className = 'ui transparent checkbox input task'>
+    <div className = 'ui disabled checkbox task'>
       <input type='checkbox' />
       <label>
         <form onSubmit={(event) => handleSubmit(event, newTask.content) }>
@@ -37,16 +36,12 @@ const NewTask = ({ setNewTask, newTask }) => {
 
 const TaskList = () => {
   const taskData = useSelector(state => state.taskList)
-  const dispatch = useDispatch()
   const [newTask, setNewTask] = useState({ active: false, content: '' })
 
   const handleClick = () => {
     setNewTask({ ...newTask, active: true })
   }
-  const handleSubmit = (event, content) => {
-    event.preventDefault()
-    dispatch(addTask(content))
-  }
+
   return(
     <div
       className="feature tasklist"
@@ -57,7 +52,7 @@ const TaskList = () => {
         return <Task key={task.id} task={task} />
       })}
       {newTask.active ?
-        <NewTask handleSubmit={handleSubmit} setNewTask={setNewTask} newTask={newTask}/>
+        <NewTask setNewTask={setNewTask} newTask={newTask}/>
         : null}
     </div>
   )
