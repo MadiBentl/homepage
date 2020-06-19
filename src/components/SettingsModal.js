@@ -1,8 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const SettingsModal = () => {
+  const visible = useSelector(state => state.settings)
+
   return(
-    <div id='settings-modal'>
+    <div id='settings-modal' className={`ui modal ${visible ? 'active' : ''}`}>
       About Haro
       Communicate through the CLI or with the mouse
       Options:

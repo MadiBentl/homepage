@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toggleTimer } from '../reducers/timer'
 import { toggleTasklist } from '../reducers/tasklist'
 import { toggleNotepad } from '../reducers/notepad'
+import { toggleModal } from '../reducers/settings'
 
 const Footer = (props) => {
 
@@ -15,7 +16,6 @@ const Footer = (props) => {
       notepad: state.notepad.visible,
     }
   })
-  console.log('status', status)
   return (
     <div id='footer'>
       <div id='photo-source'>
@@ -46,7 +46,11 @@ const Footer = (props) => {
         </div>
       </div>
       <div id='settings-link'>
-        <i aria-hidden="true" className="cog icon large"></i>
+        <i
+          aria-hidden="true"
+          className="cog icon large"
+          onClick = {() => dispatch(toggleModal())}
+        ></i>
       </div>
     </div>
   )
