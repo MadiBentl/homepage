@@ -22,7 +22,11 @@ const timerReducer = (state = initialState, action) => {
     case 'TOGGLE':
       return { ...state, visible: !(state.visible) }
     case 'RESUME_TIMER':
-      return { ...state, isOn: true, timeWhenCreated: new Date().getTime() }
+      if (state.isOn){
+        return { ...state, isOn: true, timeWhenCreated: new Date().getTime() }
+      }else{
+        return state
+      }
     case 'PAUSE_TIMER':
       return { ...state, isOn: false, initialTime: action.data.timeRemaining }
     case 'DELETE_TIMER':
