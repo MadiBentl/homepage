@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Downshift from 'downshift'
+import { useDispatch } from 'react-redux'
 
 import { createTimer, deleteTimer, toggleTimer } from '../reducers/timer'
 import { createNotepad, deleteNotepad, addNote } from '../reducers/notepad'
 import { createTasklist, addTask } from '../reducers/tasklist'
+import { getWeather } from '../reducers/weather'
 import { setWallpaper } from '../reducers/canvas'
-import { useDispatch } from 'react-redux'
 
 const items = [
   { value: 'change background' },
@@ -14,7 +15,8 @@ const items = [
   { value: 'show timer' },
   { value: 'delete timer' },
   { value: 'hide timer' },
-  { value: 'create tasklist' }
+  { value: 'create tasklist' },
+  { value: 'show weather' }
 ]
 
 const Cli = () => {
@@ -42,6 +44,9 @@ const Cli = () => {
               break
             case 'create tasklist':
               dispatch(createTasklist())
+              break
+            case 'show weather':
+              dispatch(getWeather('94', '-129'))
               break
             default:
               break
