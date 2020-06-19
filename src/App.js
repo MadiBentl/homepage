@@ -18,7 +18,7 @@ const App = () => {
         <Header />
         { taskList.visible ? <TaskList /> : null}
         { timer.visible ? <Timer /> : null}
-        { notepad.name !== undefined ? <Notepad /> : null}
+        { notepad.visible ? <Notepad /> : null}
         <Cli />
       </Canvas>
     </div>

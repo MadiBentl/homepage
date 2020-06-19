@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleTimer } from '../reducers/timer'
 import { toggleTasklist } from '../reducers/tasklist'
+import { toggleNotepad } from '../reducers/notepad'
 
 const Footer = (props) => {
 
@@ -33,7 +34,11 @@ const Footer = (props) => {
             onClick={() => dispatch(toggleTimer())}
           ></i>
           <i aria-hidden="true" className="sun icon large"></i>
-          <i aria-hidden="true" className="pencil alternative icon large"></i>
+          <i
+            aria-hidden="true"
+            className="pencil alternative icon large"
+            onClick={() => dispatch(toggleNotepad())}
+          ></i>
           <i aria-hidden="true" className="history icon large"></i>
         </div>
       </div>
