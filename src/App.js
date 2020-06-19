@@ -7,6 +7,7 @@ import Timer from './components/features/Timer'
 import Notepad from './components/features/Notepad'
 import TaskList from './components/features/TaskList'
 import Header from './components/Header'
+import SettingsModal from './components/SettingsModal'
 
 const App = () => {
   const timer = useSelector(state => state.timer)
@@ -15,6 +16,7 @@ const App = () => {
   return(
     <div className='app'>
       <Canvas>
+        <SettingsModal />
         <Header />
         { taskList.visible ? <TaskList /> : null}
         { timer.visible ? <Timer /> : null}

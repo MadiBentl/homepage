@@ -2,7 +2,7 @@ import React from 'react'
 
 const SettingsModal = () => {
   return(
-    <div>
+    <div id='settings-modal'>
       About Haro
       Communicate through the CLI or with the mouse
       Options:
