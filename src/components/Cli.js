@@ -46,7 +46,7 @@ const Cli = () => {
               dispatch(createTasklist())
               break
             case 'show weather':
-              dispatch(getWeather('94', '-129'))
+              dispatch(getWeather('94', '129'))
               break
             default:
               break

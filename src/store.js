@@ -7,13 +7,15 @@ import canvasReducer from './reducers/canvas'
 import notepadReducer from './reducers/notepad'
 import taskListReducer from './reducers/tasklist'
 import settingsReducer from './reducers/settings'
+import weatherReducer from './reducers/weather'
 
 const reducer = combineReducers({
   canvas: canvasReducer,
   timer: timerReducer,
   notepad: notepadReducer,
   taskList: taskListReducer,
-  settings: settingsReducer
+  settings: settingsReducer,
+  weather: weatherReducer
 })
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))
