@@ -60,7 +60,7 @@ const Cli = () => {
         selectedItem,
       }) => (
         <div className='cli ui transparent'>
-          <div className='ui relaxed divided list' {...getMenuProps()}>
+          <div className='ui relaxed divided list cli-options' {...getMenuProps()}>
             {isOpen
               ? items
                 .filter(item => !inputValue || item.value.includes(inputValue))
@@ -72,7 +72,7 @@ const Cli = () => {
                       item,
                       style: {
                         backgroundColor:
-                        highlightedIndex === index ? 'lightgray' : null,
+                        highlightedIndex === index ? 'rgba(255, 255, 255, 0.3)' : null,
                         fontWeight: selectedItem === item ? 'bold' : 'normal',
                       },
                     })}
