@@ -33,10 +33,13 @@ const Footer = (props) => {
             className={`hourglass half icon large ${status.timer ? 'active-feature' : ''}` }
             onClick={() => dispatch(toggleTimer())}
           ></i>
-          <i aria-hidden="true" className="sun icon large"></i>
           <i
             aria-hidden="true"
-            className="pencil alternative icon large"
+            className="sun icon large"
+          ></i>
+          <i
+            aria-hidden="true"
+            className={`pencil alternative icon large ${status.notepad ? 'active-feature' : ''}` }
             onClick={() => dispatch(toggleNotepad())}
           ></i>
           <i aria-hidden="true" className="history icon large"></i>
