@@ -9,7 +9,7 @@ const SettingsModal = () => {
   return(
     <div id='settings-modal' className={`ui modal ${visible ? 'active' : ''}`}>
       <div className='content'>
-        <div ClassName='settings-text'>
+        <div className='settings-text'>
           <h2>Meet your new dashboard</h2>
           <p>Haro was born to wed a command-line interface with near unlimited customizability.
           If you&apos;re new to Haro, we suggest checking out our in-browser Haro Tutorial</p>

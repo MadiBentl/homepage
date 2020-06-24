@@ -51,6 +51,7 @@ const Cli = () => {
       default:
         break
     }
+    setQuery('')
   }
   return(
     <div className='cli ui transparent'>
