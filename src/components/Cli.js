@@ -11,6 +11,7 @@ import { setWallpaper } from '../reducers/canvas'
 const items = [
   { value: 'change background' },
   { value: 'randomize background' },
+  { value: 'next background' },
   { value: 'set timer' },
   { value: 'show timer' },
   { value: 'delete timer' },
@@ -31,6 +32,8 @@ const Cli = () => {
           switch(selection.value){
             case 'randomize background':
               dispatch(setWallpaper())
+              break
+            case 'change background':
               break
             case 'set timer':
               console.log('selection', selection)
