@@ -1,24 +1,25 @@
-const settings = (state = false, action) => {
+const settings = (state = { visible: false }, action) => {
   switch (action.type){
     case 'HIDE_MODAL':
-      return false
+      return { visible: false }
     case 'SHOW_MODAL':
-      return true
+      return { visible: true }
     case 'TOGGLE_MODAL':
-      return !state
+      return { visible: !state.visible }
     default:
       return state
   }
 }
 
-export const hideModal = () => {
-  return { type: 'HIDE_MODAL' }
-}
+
 export const showModal = () => {
-  return { type: 'SHOW_MODAL' }
+  return ({ type: 'SHOW_MODAL' })
 }
 export const toggleModal = () => {
-  return { type: 'TOGGLE_MODAL' }
+  return ({ type: 'TOGGLE_MODAL' })
 }
 
+export const hideModal = () => {
+  return ({ type: 'HIDE_MODAL' })
+}
 export default settings
