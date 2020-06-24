@@ -8,16 +8,39 @@ const SettingsModal = () => {
 
   return(
     <div id='settings-modal' className={`ui modal ${visible ? 'active' : ''}`}>
-      <div className="header">Settings</div>
       <div className='content'>
-        About Haro
-        Communicate through the CLI or with the mouse
-        Options:
-          - log in or out
-          - save to do list or notes
-          - light mode / dark mode
-          - randomize background daily
-          - connect through Notion API???
+        <div ClassName='settings-text'>
+          <h2>Meet your new dashboard</h2>
+          <p>Haro was born to wed a command-line interface with near unlimited customizability.
+          If you&apos;re new to Haro, we suggest checking out our in-browser Haro Tutorial</p>
+        </div>
+        <h2>Settings</h2>
+        <div className='ui list'>
+          <div className='item'>
+            <div className="ui toggle checkbox">
+              <input type="checkbox" name="public" defaultChecked />
+              <label>Randomize background (daily)</label>
+            </div>
+          </div>
+          <div className='item'>
+            <div className="ui toggle checkbox">
+              <input type="checkbox" name="public" />
+              <label>Enable Dark Mode</label>
+            </div>
+          </div>
+          <div className='item'>
+            <div className="ui toggle checkbox disabled">
+              <input type="checkbox" name="public" />
+              <label>Save your dashboard (requires log in)</label>
+            </div>
+          </div>
+          <div className='item'>
+            <div className="ui toggle checkbox ">
+              <input type="checkbox" name="public" />
+              <label>Remove autocomplete on Command Line</label>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="actions">
         <div className="ui approve button">Save</div>
