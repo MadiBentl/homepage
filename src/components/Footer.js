@@ -51,6 +51,10 @@ const Footer = (props) => {
           className="cog icon large"
           onClick = {() => dispatch(toggleModal())}
         ></i>
+        <i
+          aria-hidden="true"
+          className="heart icon large"
+        ></i>
       </div>
     </div>
   )

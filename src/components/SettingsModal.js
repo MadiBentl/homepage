@@ -23,21 +23,27 @@ const SettingsModal = () => {
             </div>
           </div>
           <div className='item'>
+            <div className="ui toggle checkbox ">
+              <input type="checkbox" name="public" defaultChecked/>
+              <label>Enable hints on hover</label>
+            </div>
+          </div>
+          <div className='item'>
             <div className="ui toggle checkbox">
               <input type="checkbox" name="public" />
               <label>Enable Dark Mode</label>
             </div>
           </div>
           <div className='item'>
-            <div className="ui toggle checkbox disabled">
-              <input type="checkbox" name="public" />
-              <label>Save your dashboard (requires log in)</label>
-            </div>
-          </div>
-          <div className='item'>
             <div className="ui toggle checkbox ">
               <input type="checkbox" name="public" />
               <label>Remove autocomplete on Command Line</label>
+            </div>
+          </div>
+          <div className='item'>
+            <div className="ui toggle checkbox disabled">
+              <input type="checkbox" name="public" />
+              <label>Save your dashboard (requires log in)</label>
             </div>
           </div>
         </div>
