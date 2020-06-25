@@ -17,6 +17,11 @@ const weatherReducer = (state={}, action) => {
         temperature: 'TBD',
         weather: 'TBD'
       }
+    case 'TOGGLE_WEATHER':
+      return {
+        ...state,
+        visible: !state.visible
+      }
     default:
       return state
   }
@@ -38,4 +43,16 @@ export const getWeather = () => {
   }
 }
 
+export const toggleWeather = () => {
+  return (dispatch, getState) => {
+    const currentState = getState()
+    console.log(currentState.weather)
+    if (currentState.weather.temperature === undefined){
+      dispatch(getWeather())
+    }
+    else {
+      dispatch({ type: 'TOGGLE_WEATHER' })
+    }
+  }
+}
 export default weatherReducer

@@ -9,6 +9,10 @@ const SettingsModal = () => {
   return(
     <div id='settings-modal' className={`ui modal ${visible ? 'active' : ''}`}>
       <div className='content'>
+        <i
+          className='close icon large'
+          aria-hidden='true'
+          onClick={() => dispatch(hideModal())}/>
         <div className='settings-text'>
           <h2>Meet your new dashboard</h2>
           <p>Haro was born to wed a command-line interface with near unlimited customizability.

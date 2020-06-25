@@ -1,5 +1,7 @@
 * { box-sizing: border-box; }
-
+h1, h2{
+  margin-bottom: 0px !important;
+}
 .cli form {
   max-width: 80%;
   margin-left: auto;
@@ -71,11 +73,17 @@ input:focus {
   margin: 15px;
   padding: 10px;
 }
-.weather{
+#settings-modal i {
+  float: right;
+}
+.little-feature{
+  height: 100px;
+  width: 100px;
   border-radius: 500px;
   text-align: center;
   vertical-align: middle;
-  padding: 10px;
+  padding:10px;
+  margin: auto;
 }
 .timer{
   border-radius: 500px;

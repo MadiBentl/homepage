@@ -4,6 +4,7 @@ import { toggleTimer } from '../reducers/timer'
 import { toggleTasklist } from '../reducers/tasklist'
 import { toggleNotepad } from '../reducers/notepad'
 import { toggleModal } from '../reducers/settings'
+import { toggleWeather } from '../reducers/weather'
 
 const Footer = (props) => {
 
@@ -14,6 +15,7 @@ const Footer = (props) => {
       tasklist: state.taskList.visible,
       timer: state.timer.visible,
       notepad: state.notepad.visible,
+      weather: state.weather.visible
     }
   })
   return (
@@ -35,7 +37,8 @@ const Footer = (props) => {
           ></i>
           <i
             aria-hidden="true"
-            className="sun icon large"
+            className={`sun icon large ${status.weather ? 'active-feature' : ''}`}
+            onClick={() => dispatch(toggleWeather())}
           ></i>
           <i
             aria-hidden="true"
