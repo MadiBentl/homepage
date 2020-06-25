@@ -6,7 +6,7 @@ const Weather = () => {
   console.log(weatherData)
 
   return (
-    <div className='feature'>
+    <div className='feature weather'>
       <h1>{Math.round((weatherData.temperature - 273.15) * 10)/10}&deg;</h1>
       <p>{weatherData.weather}</p>
     </div>

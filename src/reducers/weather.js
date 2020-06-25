@@ -29,7 +29,6 @@ export const getWeather = () => {
       navigator.geolocation.getCurrentPosition(async position => {
         console.log(position)
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`)
-        console.log(response)
         dispatch({
           type: 'INIT_WEATHER',
           data: response.data

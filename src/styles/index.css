@@ -71,6 +71,12 @@ input:focus {
   margin: 15px;
   padding: 10px;
 }
+.weather{
+  border-radius: 500px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
 .timer{
   border-radius: 500px;
   text-align: center;
