@@ -27,12 +27,6 @@ const SettingsModal = () => {
             </div>
           </div>
           <div className='item'>
-            <div className="ui toggle checkbox ">
-              <input type="checkbox" name="public" defaultChecked/>
-              <label>Enable hints on hover</label>
-            </div>
-          </div>
-          <div className='item'>
             <div className="ui toggle checkbox">
               <input type="checkbox" name="public" />
               <label>Enable Dark Mode</label>
