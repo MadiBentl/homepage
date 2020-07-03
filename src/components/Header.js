@@ -5,6 +5,9 @@ const Header = () => {
   return(
     <div className='header'>
       <img className='logo' src ={logo} alt='logo' />
+      <div className = 'login'>
+          Logout
+      </div>
     </div>
   )
 }

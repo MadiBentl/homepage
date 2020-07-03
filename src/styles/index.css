@@ -8,6 +8,7 @@ h1, h2{
   margin-right: auto;
   text-align: center;
 }
+
 #settings-modal{
   position: absolute;
   width: 500px;
@@ -21,14 +22,16 @@ h1, h2{
 #settings-text{
   text-align: center;
 }
+.login {
+  color: white;
+  float:right;
+}
 .header{
   grid-area: header;
-  justify-self: stretch;
+  text-align: center;
 }
 .logo{
-  display:block;
   width: 50px;
-  margin: auto;
 }
 .tasklist{
   padding: 10px;
