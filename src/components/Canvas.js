@@ -12,7 +12,7 @@ const Canvas = (props) => {
   }, [])
 
   return (
-    <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})` }}>
+    <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: '#000000'}}>
       {props.children}
       <Footer source={image.source} />
     </div>

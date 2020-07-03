@@ -1,11 +1,6 @@
 import axios from 'axios'
 
-const initialState = {
-  img:'https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjEzODg3Mn0',
-  source: 'pawel_czerwinski'
-}
-
-const canvasReducer = (state = initialState, action ) => {
+const canvasReducer = (state = {}, action ) => {
   console.log('action', action)
   switch(action.type){
     case 'SET_WALLPAPER':
