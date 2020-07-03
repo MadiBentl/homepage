@@ -25,6 +25,7 @@ h1, h2{
 .login {
   color: white;
   float:right;
+  margin: 5px;
 }
 .header{
   grid-area: header;
