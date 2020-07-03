@@ -5,6 +5,7 @@ import { toggleTasklist } from '../reducers/tasklist'
 import { toggleNotepad } from '../reducers/notepad'
 import { toggleModal } from '../reducers/settings'
 import { toggleWeather } from '../reducers/weather'
+import { setWallpaper } from '../reducers/canvas'
 
 const Footer = (props) => {
 
@@ -45,7 +46,6 @@ const Footer = (props) => {
             className={`pencil alternative icon large ${status.notepad ? 'active-feature' : ''}` }
             onClick={() => dispatch(toggleNotepad())}
           ></i>
-          <i aria-hidden="true" className="history icon large"></i>
         </div>
       </div>
       <div id='settings-link'>
@@ -57,6 +57,11 @@ const Footer = (props) => {
         <i
           aria-hidden="true"
           className="heart icon large"
+        ></i>
+        <i
+          aria-hidden="true"
+          className="random icon large"
+          onClick = {() => dispatch(setWallpaper())}
         ></i>
       </div>
     </div>
