@@ -1,13 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useSelector } from 'react-redux'
 
-const Modal = () => {
-  const visible = useSelector(state => state.settings.visible)
+const Modal = (props) => {
 
   return ReactDOM.createPortal(
-    <div className = {`ui modals dimmer visible ${visible ? 'active' : ''}`}>
-      <div id='settings-modal' className={`ui standard modal ${visible ? 'active' : ''}`}>
+    <div className = {`ui modals dimmer visible ${props.visible ? 'active' : ''}`}>
+      <div id='settings-modal' className={`ui standard modal ${props.visible ? 'active' : ''}`}>
         <div className='content'>
         </div>
       </div>
