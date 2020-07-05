@@ -21,7 +21,6 @@ const App = () => {
     <div className='app'>
       <Canvas>
         <SettingsModal />
-        <LoginModal />
         <Header />
         { taskList.visible ? <TaskList /> : null}
         { timer.visible ? <Timer /> : null}
