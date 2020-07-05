@@ -1,18 +1,19 @@
-const adminReducer = (state = { visible: false }, action ) => {
+const adminReducer = (state = { user: false }, action ) => {
   switch(action.type){
-    case 'OPEN_MODAL':
-      return { ...state, visible: true }
     case 'LOGIN':
-      break
+      return { ...state, user: true }
     case 'LOGOUT':
-      break
+      return { ...state, user: false }
     default:
       return state
   }
 }
 
-export const openModal = () => {
-  return ({ type: 'OPEN_MODAL' })
+export const setLogIn = () => {
+  return ({ type: 'LOGIN' })
+}
+export const setLogOut = () => {
+  return ({ type: 'LOGOUT' })
 }
 
 export default adminReducer

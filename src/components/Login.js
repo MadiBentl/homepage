@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import Modal from './Modal'
+import { useSelector, useDispatch } from 'react-redux'
+import { setLogIn, setLogOut } from '../reducers/admin'
 
 const Login = () => {
   const [auth, setAuth] = useState('')
-  const [isLoggedIn, setIsLoggedIn] = useState(null)
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.admin.user)
 
   useEffect(() => {
     window.gapi.load('client:auth2',() => {
@@ -14,24 +15,27 @@ const Login = () => {
       }).then(() => {
         const googleAuth = window.gapi.auth2.getAuthInstance()
         setAuth(googleAuth)
-        setIsLoggedIn(googleAuth.isSignedIn.get())
-        console.log(googleAuth, isLoggedIn)
+        console.log('status', googleAuth.isSignedIn.get())
       })
     })
   }, [])
 
   const handleLogin = () => {
     auth.signIn()
+    dispatch(setLogIn())
   }
   const handleLogout = () => {
     auth.signOut()
+    dispatch(setLogOut())
   }
-  if (auth && auth.isLoggedIn){
-    return <div onClick= {() => handleLogout()}>LogOut</div>
+  console.log('user', user)
+  if (user){
+    return <div onClick= {() => handleLogout()}>Logout</div>
+  }else{
+    return(
+      <div onClick= {() => handleLogin()}>Login</div>
+    )
   }
-  return(
-    <div onClick= {() => handleLogin()}>Login</div>
-  )
 }
 
 export default Login
