@@ -7,12 +7,12 @@ const Canvas = (props) => {
   const image = useSelector(state => state.canvas)
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(setWallpaper())
-  }, [])
+  }, [])*/
 
   return (
-    <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: '#000000'}}>
+    <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: 'gray' } }>
       {props.children}
       <Footer source={image.source} />
     </div>

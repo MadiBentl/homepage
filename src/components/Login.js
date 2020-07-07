@@ -1,41 +1,54 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { setLogIn, setLogOut } from '../reducers/admin'
 
-const Login = () => {
-  const [auth, setAuth] = useState('')
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.admin.user)
+class Login extends React.Component {
 
-  useEffect(() => {
+  componentDidMount(){
     window.gapi.load('client:auth2',() => {
       window.gapi.client.init({
-        'clientId': '94631634763-hnonm7ldimcfbnh9m5t7l5gff4vhsufi.apps.googleusercontent.com',
-        'scope': 'email'
+        clientId: '94631634763-hnonm7ldimcfbnh9m5t7l5gff4vhsufi.apps.googleusercontent.com',
+        scope: 'email'
       }).then(() => {
-        const googleAuth = window.gapi.auth2.getAuthInstance()
-        setAuth(googleAuth)
-        console.log('status', googleAuth.isSignedIn.get())
+        this.auth = window.gapi.auth2.getAuthInstance()
+        this.handleAuthChange(this.auth.isSignedIn.get())
+        this.auth.isSignedIn.listen(this.handleAuthChange)
       })
     })
-  }, [])
+  }
 
-  const handleLogin = () => {
-    auth.signIn()
-    dispatch(setLogIn())
+  handleAuthChange = (isSignedIn) => {
+    if (isSignedIn){
+      this.props.setLogIn(this.auth.currentUser.get().getId())
+    }else{
+      this.props.setLogOut()
+    }
   }
-  const handleLogout = () => {
-    auth.signOut()
-    dispatch(setLogOut())
+
+  handleLogin = () => {
+    this.auth.signIn()
   }
-  console.log('user', user)
-  if (user){
-    return <div onClick= {() => handleLogout()}>Logout</div>
-  }else{
-    return(
-      <div onClick= {() => handleLogin()}>Login</div>
-    )
+  handleLogout = () => {
+    this.auth.signOut()
+  }
+  render(){
+    if (this.props.user === null){
+      return null
+    }
+    if (this.props.user){
+      return <div onClick= {this.handleLogout}>Logout</div>
+    }else{
+      return(
+        <div onClick= {this.handleLogin}>Login</div>
+      )
+    }
   }
 }
 
-export default Login
+const mapStateToProps = (state) => {
+  return({
+    user: state.admin.user
+  })
+}
+
+export default connect(mapStateToProps, { setLogIn, setLogOut })(Login)

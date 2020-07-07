@@ -1,7 +1,7 @@
-const adminReducer = (state = { user: false }, action ) => {
+const adminReducer = (state = { user: null }, action ) => {
   switch(action.type){
     case 'LOGIN':
-      return { ...state, user: true }
+      return { ...state, user: true, userId: action.data.userId }
     case 'LOGOUT':
       return { ...state, user: false }
     default:
@@ -9,8 +9,8 @@ const adminReducer = (state = { user: false }, action ) => {
   }
 }
 
-export const setLogIn = () => {
-  return ({ type: 'LOGIN' })
+export const setLogIn = (userId) => {
+  return ({ type: 'LOGIN', data: { userId } })
 }
 export const setLogOut = () => {
   return ({ type: 'LOGOUT' })
