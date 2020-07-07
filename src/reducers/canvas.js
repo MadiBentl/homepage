@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const canvasReducer = (state = {}, action ) => {
-  console.log('action', action)
   switch(action.type){
     case 'SET_WALLPAPER':
       return { ...state, img: action.data.img, source: action.data.source }

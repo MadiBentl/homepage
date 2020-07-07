@@ -36,7 +36,6 @@ const taskList = (state = initialState, action) => {
         }
       }) }
     default:
-      console.log('default')
       return state
   }
 }
