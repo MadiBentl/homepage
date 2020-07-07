@@ -7,7 +7,7 @@ class Login extends React.Component {
   componentDidMount(){
     window.gapi.load('client:auth2',() => {
       window.gapi.client.init({
-        clientId: '94631634763-hnonm7ldimcfbnh9m5t7l5gff4vhsufi.apps.googleusercontent.com',
+        clientId: '122893238691-isau3oime10dju13jst02gntg8mtejvi.apps.googleusercontent.com',
         scope: 'email'
       }).then(() => {
         this.auth = window.gapi.auth2.getAuthInstance()
@@ -31,7 +31,7 @@ class Login extends React.Component {
   handleLogout = () => {
     this.auth.signOut()
   }
-  render(){
+  renderAuthButton(){
     if (this.props.user === null){
       return null
     }
@@ -42,6 +42,13 @@ class Login extends React.Component {
         <div onClick= {this.handleLogin}>Login</div>
       )
     }
+  }
+  render(){
+    return(
+      <div>
+      {this.renderAuthButton()}
+      </div>
+    )
   }
 }
 
