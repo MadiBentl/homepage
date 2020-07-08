@@ -22,6 +22,16 @@ h1, h2{
 #settings-text{
   text-align: center;
 }
+#imask-input{
+  border:none;
+  background-color: inherit;
+  font-size:150%;
+  color: white;
+  width:40%;
+}
+#imask-input ::placeholder{
+  color: white;
+}
 .login {
   color: white;
   float:right;

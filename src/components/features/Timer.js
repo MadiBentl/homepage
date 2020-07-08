@@ -67,33 +67,27 @@ const Timer = () => {
 
   if (timerData.initialTime === null){
     return(
-      <form>
-        <IMaskInput
-          id='imask-input'
-          mask='[00:][00]:00'
-          radix="."
-          value={userTimeInput}
-          signed={true}
-          name='pleasework'
-          unmask={true} // true|false|'typed'
-          //ref={inputRef.current}  // access to nested input
-          // DO NOT USE onChange TO HANDLE CHANGES!
-          // USE onAccept INSTEAD
-          onAccept={
-            // depending on prop above first argument is
-            // `value` if `unmask=false`,
-            // `unmaskedValue` if `unmask=true`,
-            // `typedValue` if `unmask='typed'`
-            //(value) => console.log(value)
-            (value) => setUserTimerInput(value)
-          }
-          // ...and more mask props in a guide
+      <div className = 'feature timer sidebar'>
+        <form onSubmit = {(e) => handleButtonClick(e)}>
+          <IMaskInput
+            id='imask-input'
+            mask='[00:][00]:00'
+            radix="."
+            value={userTimeInput}
+            signed={true}
+            name='pleasework'
+            unmask={true}
+            onAccept={
+              (value) => setUserTimerInput(value)
+            }
+            // ...and more mask props in a guide
 
-          // input props also available
-          placeholder='00:00:00'
-        />
-        <button onClick={(e) => handleButtonClick(e)}>submit</button>
-      </form>)
+            // input props also available
+            placeholder='00:00:00'
+          />
+        </form>
+        <p>Enter Time</p>
+      </div>)
   }
   return(
     <div className = 'feature timer sidebar'>
