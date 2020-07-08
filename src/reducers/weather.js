@@ -1,14 +1,14 @@
 import axios from 'axios'
 
-const weatherReducer = (state={}, action) => {
+const weatherReducer = (state={visible: false, celsius: true}, action) => {
   switch(action.type){
     case 'INIT_WEATHER':
       return {
+        ...state,
         location: action.data.name,
         temperature: action.data.main.temp,
         weather: action.data.weather[0].description,
-        day: new Date(),
-        visible: true
+        day: new Date()
       }
     case 'UPDATE_WEATHER':
       return {
@@ -21,6 +21,10 @@ const weatherReducer = (state={}, action) => {
       return {
         ...state,
         visible: !state.visible
+      }
+    case 'TOGGLE_CELSIUS':
+      return {
+        ...state, celsius: !state.celsius
       }
     default:
       return state
@@ -54,5 +58,9 @@ export const toggleWeather = () => {
       dispatch({ type: 'TOGGLE_WEATHER' })
     }
   }
+}
+
+export const toggleCelsius = () => {
+  return ({ type: 'TOGGLE_CELSIUS' })
 }
 export default weatherReducer

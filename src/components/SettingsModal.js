@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
+import { toggleCelsius } from '../reducers/weather'
 import { useSelector, useDispatch } from 'react-redux'
 import { hideModal } from '.././reducers/settings'
 
 const SettingsModal = () => {
   const dispatch = useDispatch()
   const visible = useSelector(state => state.settings.visible)
+  const [isCelsius, setIsCelsius] = useState(true)
+
+  const handleFahrenheitToggle = () => {
+    setIsCelsius(!isCelsius)
+    dispatch(toggleCelsius(isCelsius))
+  }
 
   return ReactDOM.createPortal(
     <div className = {`ui modals dimmer visible ${visible ? 'active' : ''}`}>
@@ -29,9 +36,9 @@ const SettingsModal = () => {
               </div>
             </div>
             <div className='item'>
-              <div className="ui toggle checkbox">
-                <input type="checkbox" name="public" />
-                <label>Enable Dark Mode</label>
+              <div className="ui toggle checkbox "  onClick={() => handleFahrenheitToggle()}>
+                <input type="checkbox" name="public" checked={isCelsius}/>
+                <label>View temperature in Celsius</label>
               </div>
             </div>
             <div className='item'>
@@ -47,10 +54,6 @@ const SettingsModal = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="actions">
-          <div className="ui approve button">Save</div>
-          <div className="ui cancel button" onClick={() => dispatch(hideModal())}>Cancel</div>
         </div>
       </div>
     </div>,
