@@ -36,8 +36,8 @@ const SettingsModal = () => {
               </div>
             </div>
             <div className='item'>
-              <div className="ui toggle checkbox "  onClick={() => handleFahrenheitToggle()}>
-                <input type="checkbox" name="public" checked={isCelsius}/>
+              <div className="ui toggle checkbox " >
+                <input type="checkbox" name="public" onChange={() => handleFahrenheitToggle()} checked={isCelsius}/>
                 <label>View temperature in Celsius</label>
               </div>
             </div>

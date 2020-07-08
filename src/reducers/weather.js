@@ -1,13 +1,21 @@
 import axios from 'axios'
 
-const weatherReducer = (state={visible: false, celsius: true}, action) => {
+const weatherReducer = (state={ visible: false, celsius: true, loaded: false }, action) => {
   switch(action.type){
+    case 'SET_WEATHER_LOADING':
+      return{
+        ...state,
+        visible: true,
+        celsius: true,
+        loaded: false }
     case 'INIT_WEATHER':
       return {
         ...state,
         location: action.data.name,
         temperature: action.data.main.temp,
         weather: action.data.weather[0].description,
+        loaded: true,
+        visible: true,
         day: new Date()
       }
     case 'UPDATE_WEATHER':
@@ -20,7 +28,7 @@ const weatherReducer = (state={visible: false, celsius: true}, action) => {
     case 'TOGGLE_WEATHER':
       return {
         ...state,
-        visible: !state.visible
+        visible: !state.visible,
       }
     case 'TOGGLE_CELSIUS':
       return {
@@ -34,6 +42,7 @@ const weatherReducer = (state={visible: false, celsius: true}, action) => {
 export const getWeather = () => {
   return async dispatch => {
     const API_KEY = '7341f66d131be4663e75d126e95b4ed0'
+
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(async position => {
         console.log(position)
@@ -51,7 +60,8 @@ export const toggleWeather = () => {
   return (dispatch, getState) => {
     const currentState = getState()
     console.log(currentState.weather)
-    if (currentState.weather.temperature === undefined){
+    if (currentState.temperature === undefined){
+      console.log('fetching weather')
       dispatch(getWeather())
     }
     else {
