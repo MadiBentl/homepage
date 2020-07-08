@@ -1,5 +1,5 @@
 const initialState = {
-  initialTime: 0,
+  initialTime: null,
   name: 'Unset Timer',
   isOn: false,
   visible: false
@@ -39,7 +39,6 @@ const timerReducer = (state = initialState, action) => {
 export const createTimer = (time) => {
   return ({ type: 'SET_TIMER', data: { time } })
 }
-
 export const setName = (name) => {
   return({ type: 'SET_NAME', data: { name } })
 }
