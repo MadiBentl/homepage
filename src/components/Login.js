@@ -1,61 +1,59 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { setLogIn, setLogOut } from '../reducers/admin'
 
-class Login extends React.Component {
+const Login = () => {
 
-  componentDidMount(){
+  const [auth, setAuth] = useState(null)
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.admin.user )
+
+  useEffect(() => {
+    const handleAuthChange = (isSignedIn) => {
+      if (isSignedIn){
+        dispatch(setLogIn(auth.currentUser.get().getId()))
+      }else{
+        dispatch(setLogOut())
+      }
+    }
     window.gapi.load('client:auth2',() => {
       window.gapi.client.init({
-        clientId: '122893238691-isau3oime10dju13jst02gntg8mtejvi.apps.googleusercontent.com',
+        clientId: '213163615644-gb7ovof03holrqhn7ela4jmu4e3v7oa1.apps.googleusercontent.com',
         scope: 'email'
-      }).then(() => {
-        this.auth = window.gapi.auth2.getAuthInstance()
-        this.handleAuthChange(this.auth.isSignedIn.get())
-        this.auth.isSignedIn.listen(this.handleAuthChange)
+      }).then(async() => {
+        const googleAuth = await window.gapi.auth2.getAuthInstance()
+        setAuth(googleAuth)
+        if(auth){
+          handleAuthChange(auth.isSignedIn.get())
+          auth.isSignedIn.listen(handleAuthChange)
+        }
       })
     })
-  }
+  }, [auth])
 
-  handleAuthChange = (isSignedIn) => {
-    if (isSignedIn){
-      this.props.setLogIn(this.auth.currentUser.get().getId())
-    }else{
-      this.props.setLogOut()
-    }
+  const handleLogin = async() => {
+    auth.signIn()
   }
-
-  handleLogin = () => {
-    this.auth.signIn()
+  const handleLogout = () => {
+    auth.signOut()
   }
-  handleLogout = () => {
-    this.auth.signOut()
-  }
-  renderAuthButton(){
-    if (this.props.user === null){
+  const renderAuthButton = () => {
+    if ( user === null){
       return null
     }
-    if (this.props.user){
-      return <div onClick= {this.handleLogout}>Logout</div>
+    if (user){
+      return <div onClick= {handleLogout}>Logout</div>
     }else{
       return(
-        <div onClick= {this.handleLogin}>Login</div>
+        <div onClick= {handleLogin}>Login</div>
       )
     }
   }
-  render(){
-    return(
-      <div>
-      {this.renderAuthButton()}
-      </div>
-    )
-  }
+  return(
+    <div>
+      {renderAuthButton()}
+    </div>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return({
-    user: state.admin.user
-  })
-}
-
-export default connect(mapStateToProps, { setLogIn, setLogOut })(Login)
+export default Login
