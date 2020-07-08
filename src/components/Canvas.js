@@ -9,7 +9,7 @@ const Canvas = (props) => {
 
   useEffect(() => {
     dispatch(setWallpaper())
-  }, [])
+  }, [dispatch])
 
   return (
     <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: 'gray' } }>

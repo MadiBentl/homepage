@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { IMaskInput } from 'react-imask'
 import { useSelector, useDispatch } from 'react-redux'
 import { pauseTimer, resumeTimer, createTimer } from '../../reducers/timer'

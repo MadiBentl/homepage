@@ -29,7 +29,7 @@ const Login = () => {
         }
       })
     })
-  }, [auth])
+  }, [auth, dispatch])
 
   const handleLogin = async() => {
     auth.signIn()

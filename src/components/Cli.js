@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import Downshift from 'downshift'
 import { useDispatch } from 'react-redux'
 
-import { createTimer, deleteTimer, toggleTimer } from '../reducers/timer'
-import { createNotepad, deleteNotepad, addNote } from '../reducers/notepad'
-import { createTasklist, addTask } from '../reducers/tasklist'
+import { createTimer, toggleTimer } from '../reducers/timer'
+import { createTasklist } from '../reducers/tasklist'
 import { getWeather } from '../reducers/weather'
 import { setWallpaper } from '../reducers/canvas'
 
