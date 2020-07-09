@@ -28,7 +28,7 @@ const weatherReducer = (state={ visible: false, celsius: true, loaded: false }, 
     case 'TOGGLE_WEATHER':
       return {
         ...state,
-        visible: !state.visible,
+        visible: !(state.visible),
       }
     case 'TOGGLE_CELSIUS':
       return {
@@ -59,12 +59,13 @@ export const getWeather = () => {
 export const toggleWeather = () => {
   return (dispatch, getState) => {
     const currentState = getState()
-    console.log(currentState.weather)
-    if (currentState.temperature === undefined){
+    console.log(currentState.weather.temperature)
+    if (currentState.weather.temperature === undefined){
       console.log('fetching weather')
       dispatch(getWeather())
     }
     else {
+      console.log('toggling')
       dispatch({ type: 'TOGGLE_WEATHER' })
     }
   }
