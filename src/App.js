@@ -25,7 +25,6 @@ const App = () => {
         { timer.visible ? <Timer /> : null}
         { notepad.visible ? <Notepad /> : null}
         { weather.visible ? <Weather /> : null}
-        <Cli />
       </Canvas>
     </div>
   )

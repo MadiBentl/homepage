@@ -123,7 +123,7 @@ textarea {
   grid-area: footer;
   align-self: end;
   margin: 3px;
-  color:RGB(255, 255, 255, 0.5);
+  color:RGB(255, 255, 255, 0.7);
 }
 #footer .active-feature{
   color: white;
