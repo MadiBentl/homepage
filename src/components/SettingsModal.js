@@ -7,6 +7,7 @@ import { hideModal } from '.././reducers/settings'
 const SettingsModal = () => {
   const dispatch = useDispatch()
   const visible = useSelector(state => state.settings.visible)
+  const isLoggedIn = useSelector(state => state.admin.user)
   const [isCelsius, setIsCelsius] = useState(true)
 
   const handleFahrenheitToggle = () => {
@@ -48,8 +49,8 @@ const SettingsModal = () => {
               </div>
             </div>
             <div className='item'>
-              <div className="ui toggle checkbox disabled">
-                <input type="checkbox" name="public" />
+              <div className='ui toggle checkbox'>
+                <input type="checkbox" name="public" disabled={isLoggedIn ? '' : 'disabled'}/>
                 <label>Save your dashboard (requires log in)</label>
               </div>
             </div>

@@ -75,7 +75,6 @@ const Timer = () => {
             radix="."
             value={userTimeInput}
             signed={true}
-            name='pleasework'
             unmask={true}
             onAccept={
               (value) => setUserTimerInput(value)
