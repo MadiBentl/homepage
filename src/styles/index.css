@@ -46,7 +46,7 @@ h1, h2{
 }
 .tasklist{
   padding: 10px;
-  grid-area: leftbar;
+  grid-area: feature;
   display: inline-block;
 }
 .cli input {
@@ -117,20 +117,27 @@ textarea {
   color: white;
   justify-self:start;
   margin-left: 10px;
-  grid-area: leftbar;
+  grid-area: feature;
+}
+.react-draggable{
+  max-width:25%
 }
 #footer{
   grid-area: footer;
   align-self: end;
   margin: 3px;
   color:RGB(255, 255, 255, 0.7);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 #footer .active-feature{
   color: white;
 }
 #feature-links-container{
   display: inline-block;
-  width: 33%
+  width: 33%;
 }
 #feature-links{
   text-align: center;
@@ -150,14 +157,6 @@ textarea {
 .canvas {
   height: 100% !important;
   background-size: cover;
-  display: grid;
-  grid-template-columns: 75% 25%;
-  grid-template-rows: auto;
-  grid-template-areas:
-   "header header"
-   "leftbar sidebar"
-   "cli cli"
-   "footer footer";
 }
 .app{
   height: 100vh;
