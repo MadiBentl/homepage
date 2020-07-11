@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { IMaskInput } from 'react-imask'
 import { useSelector, useDispatch } from 'react-redux'
-import { pauseTimer, resumeTimer, createTimer } from '../../reducers/timer'
+import { pauseTimer, resumeTimer, createTimer, stopTimer } from '../../reducers/timer'
 
 const Timer = () => {
   const timerData = useSelector(state => state.timer)
@@ -23,12 +23,13 @@ const Timer = () => {
 
   useEffect(() => {
     if (timerData.isOn){
-      interval = setInterval(() => {
+      interval = setInterval(function(){
         const startingTime = new Date().getTime()
         const finishedTime = (timerData.initialTime) + now
         setDistance(finishedTime - startingTime)
 
-        if (distance <= 0){
+        if (finishedTime - startingTime <= 1000){
+          dispatch(stopTimer())
           clearInterval(interval)
         }
       }, 1000)

@@ -90,15 +90,6 @@ input:focus {
 #settings-modal i {
   float: right;
 }
-.little-feature{
-  height: 100px;
-  width: 100px;
-  border-radius: 500px;
-  text-align: center;
-  vertical-align: middle;
-  padding:10px;
-  margin: auto;
-}
 .timer{
   border-radius: 500px;
   text-align: center;
