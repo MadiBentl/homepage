@@ -44,6 +44,12 @@ const SettingsModal = () => {
             </div>
             <div className='item'>
               <div className='ui toggle checkbox'>
+                <input type="checkbox" name="public" />
+                <label>High Visibility Mode</label>
+              </div>
+            </div>
+            <div className='item'>
+              <div className='ui toggle checkbox'>
                 <input type="checkbox" name="public" disabled={isLoggedIn ? '' : 'disabled'}/>
                 <label>Save your dashboard (requires log in)</label>
               </div>
