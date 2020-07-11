@@ -79,6 +79,7 @@ const Timer = () => {
             onAccept={
               (value) => setUserTimerInput(value)
             }
+            autocomplete="off"
             // ...and more mask props in a guide
 
             // input props also available
