@@ -56,10 +56,6 @@ const Footer = (props) => {
         ></i>
         <i
           aria-hidden="true"
-          className="heart icon large"
-        ></i>
-        <i
-          aria-hidden="true"
           className="random icon large"
           onClick = {() => dispatch(setWallpaper())}
         ></i>
