@@ -47,7 +47,6 @@ const Timer = () => {
   const handleButtonClick = (e) => {
     e.preventDefault()
     const seconds = document.getElementById('imask-input').value.split(':').reverse()
-    console.log(seconds)
     let finalNum = 0
     for (let i = seconds.length - 1; i >= 0; i--){
       switch(i){
