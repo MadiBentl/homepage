@@ -9,6 +9,8 @@ import TaskList from './components/features/TaskList'
 import Weather from './components/features/Weather'
 import Header from './components/Header'
 import SettingsModal from './components/SettingsModal'
+import Footer from './components/Footer'
+
 
 const App = () => {
 
@@ -26,6 +28,7 @@ const App = () => {
   const notepad = useSelector(state => state.notepad)
   const taskList = useSelector(state => state.taskList)
   const weather = useSelector(state => state.weather)
+  const image = useSelector(state => state.canvas)
 
   const onStart = () => {
     setDragLocation({ ...dragLocation, activeDrags: ++dragLocation.activeDrags })
@@ -45,6 +48,7 @@ const App = () => {
         { timer.visible ? <Draggable {...dragHandlers}><div><Timer /></div></Draggable> : null}
         { notepad.visible ? <Draggable {...dragHandlers}><div><Notepad /></div></Draggable> : null}
         { weather.visible ? <Draggable {...dragHandlers}><div><Weather /></div></Draggable> : null}
+        <Footer source={image.source} />
       </Canvas>
     </div>
   )
