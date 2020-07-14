@@ -41,23 +41,29 @@ const Note = ({ props }) => {
     <Draggable {...dragHandlers} position={dragLocation.controlledPosition} onDrag={onControlledDrag}>
       <div className = 'ui card feature'>
         <div className='content'>
-          <i className="right floated cancel icon"></i>
+          <i className="right floated window close outline large icon"></i>
           <div
             className='header'
             contentEditable="true"
             suppressContentEditableWarning="true"
             onChange={event => setHeader(event.target.value)}
             placeholder={props.name}
-          >{ header }</div>
+          >{ props.name }</div>
           <textarea
             value= {content}
             onChange={(event) => setContent(event.target.value)}
             placeholder='Write yourself a note!'
           >
           </textarea>
+        </div>
+        <div className = 'extra content'>
           <span className="right floated">
             Create new Note
             <i className="plus icon" onClick={() => dispatch(addNote())}></i>
+          </span>
+          <span>
+            <i className="star outline icon"></i>
+              Favourite
           </span>
         </div>
       </div>
