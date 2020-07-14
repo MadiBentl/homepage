@@ -3,19 +3,17 @@ const generateId = () => {
 }
 
 const initialState = {
-  name: 'Notepad',
-  date: new Date(),
-  content: '',
+  notes: [{
+    name: 'Notepad',
+    content: '',
+    id: generateId()
+  }],
   visible: false
 }
 const notepadReducer = (state = initialState, action) => {
   switch(action.type){
     case 'CREATE_NOTEPAD':
-      return {
-        name: 'Notepad',
-        visible: true,
-        content: ''
-      }
+      return { ...state, visible: true }
     case 'HIDE_NOTEPAD':
       return { ...state, visible: false }
     case 'SHOW_NOTEPAD':
@@ -25,9 +23,14 @@ const notepadReducer = (state = initialState, action) => {
     case 'ADD_NOTE':
       return { ...state, notes: state.notes.concat({
         content: action.data.content,
-        complete: false,
         id: generateId()
       }) }
+    case 'EDIT_NOTE':
+      return state.notes.map(note => {
+        if (note.id === action.data.id){
+          note.content = action.data.content
+        }
+      })
     default:
       return state
   }
@@ -44,6 +47,9 @@ export const showNotepad = () => {
 }
 export const addNote = (content) => {
   return({ type: 'ADD_NOTE', data:{ content } })
+}
+export const editNote = (content, id) => {
+  return ({ type: 'EDIT_NOTE', data: { content, id } })
 }
 export const toggleNotepad = () => {
   return({ type: 'TOGGLE_NOTEPAD' })

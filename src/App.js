@@ -46,7 +46,7 @@ const App = () => {
         <Header />
         { taskList.visible ? <Draggable {...dragHandlers}><div><TaskList /></div></Draggable> : null}
         { timer.visible ? <Draggable {...dragHandlers}><div><Timer /></div></Draggable> : null}
-        { notepad.visible ? <Draggable {...dragHandlers}><div><Notepad /></div></Draggable> : null}
+        { notepad.visible ?<div><Notepad /></div> : null}
         { weather.visible ? <Draggable {...dragHandlers}><div><Weather /></div></Draggable> : null}
         <Footer source={image.source} />
       </Canvas>

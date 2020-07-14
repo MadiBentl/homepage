@@ -32,6 +32,12 @@ h1, h2{
 #imask-input ::placeholder{
   color: white;
 }
+.card i {
+  color: black;
+}
+.card {
+  color: black;
+}
 .login {
   color: white;
   float:right;
@@ -109,6 +115,9 @@ textarea {
   justify-self:start;
   margin-left: 10px;
   grid-area: feature;
+}
+.feature h1{
+  color: black;
 }
 .react-draggable{
   max-width:25%

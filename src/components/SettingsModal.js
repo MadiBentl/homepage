@@ -45,7 +45,13 @@ const SettingsModal = () => {
             <div className='item'>
               <div className='ui toggle checkbox'>
                 <input type="checkbox" name="public" />
-                <label>High Visibility Mode</label>
+                <label>Enable High Visibility Mode</label>
+              </div>
+            </div>
+            <div className='item'>
+              <div className='ui toggle checkbox'>
+                <input type="checkbox" name="public" />
+                <label>Enable Dark Mode</label>
               </div>
             </div>
             <div className='item'>
