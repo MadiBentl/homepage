@@ -42,7 +42,7 @@ const Note = ({ props }) => {
       <div className = 'ui card feature'>
         <div className='content'>
           <i className="right floated window close outline large icon"></i>
-          <strong className="cursor"><i className="right floated hand rock outline icon"></i></strong>
+          <strong className="cursor"><i className="right floated hand rock outline icon large"></i></strong>
           <div
             className='header'
             contentEditable="true"
