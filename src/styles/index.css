@@ -37,6 +37,9 @@ h1, h2{
 }
 .card {
   color: black;
+  resize: both;
+  overflow: auto;
+
 }
 .login {
   color: white;
