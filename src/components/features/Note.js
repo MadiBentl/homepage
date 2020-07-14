@@ -38,10 +38,11 @@ const Note = ({ props }) => {
   const dragHandlers = { onStart, onStop }
 
   return(
-    <Draggable {...dragHandlers} position={dragLocation.controlledPosition} onDrag={onControlledDrag}>
+    <Draggable {...dragHandlers} handle="strong" position={dragLocation.controlledPosition} onDrag={onControlledDrag}>
       <div className = 'ui card feature'>
         <div className='content'>
           <i className="right floated window close outline large icon"></i>
+          <strong className="cursor"><i className="right floated hand rock outline icon"></i></strong>
           <div
             className='header'
             contentEditable="true"
