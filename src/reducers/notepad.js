@@ -6,7 +6,8 @@ const initialState = {
   notes: [{
     name: 'Notepad',
     content: '',
-    id: generateId()
+    id: generateId(),
+    location: { x: 0, y: 0 }
   }],
   visible: false
 }
@@ -22,15 +23,33 @@ const notepadReducer = (state = initialState, action) => {
       return { ...state, visible: !state.visible }
     case 'ADD_NOTE':
       return { ...state, notes: state.notes.concat({
+        name: 'Notepad',
         content: action.data.content,
-        id: generateId()
+        id: generateId(),
+        location: { x: 0, y: 0 }
       }) }
     case 'EDIT_NOTE':
       return state.notes.map(note => {
         if (note.id === action.data.id){
           note.content = action.data.content
+          note.name = action.data.name
         }
       })
+    case 'DRAG_NOTE':
+      return { ...state,
+        notes: state.notes.map(note => {
+          if (note.id === action.data.id){
+            return{
+              ...note,
+              location: {
+                x: action.data.x,
+                y: action.data.y
+              }
+            }
+          }
+          return note
+        })
+      }
     default:
       return state
   }
@@ -48,11 +67,14 @@ export const showNotepad = () => {
 export const addNote = (content) => {
   return({ type: 'ADD_NOTE', data:{ content } })
 }
-export const editNote = (content, id) => {
+export const editNote = (content, name, id) => {
   return ({ type: 'EDIT_NOTE', data: { content, id } })
 }
 export const toggleNotepad = () => {
   return({ type: 'TOGGLE_NOTEPAD' })
+}
+export const dragNote = (id, x, y) => {
+  return({ type: 'DRAG_NOTE', data: { id, x, y } })
 }
 
 export default notepadReducer

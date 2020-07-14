@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { addNote } from '../../reducers/notepad'
+import { addNote, dragNote } from '../../reducers/notepad'
 import Draggable from 'react-draggable'
 
 
@@ -15,7 +15,7 @@ const Note = ({ props }) => {
       x: 0, y: 0
     },
     controlledPosition: {
-      x: -400, y: 200
+      x: props.location.x, y: props.location.y
     }
   })
 
@@ -24,12 +24,21 @@ const Note = ({ props }) => {
   }
 
   const onStop = () => {
+    console.log(dragLocation)
     setDragLocation({ ...dragLocation, activeDrags:--dragLocation.activeDrags })
+    console.log(dragLocation.controlledPosition.x, dragLocation.controlledPosition.y)
+    dispatch(dragNote(props.id, dragLocation.controlledPosition.x, dragLocation.controlledPosition.y))
   }
+
+  const onControlledDrag = (e, position) => {
+    const { x, y } = position
+    setDragLocation({ ...dragLocation, controlledPosition: { x, y } })
+  }
+
   const dragHandlers = { onStart, onStop }
 
   return(
-    <Draggable {...dragHandlers}>
+    <Draggable {...dragHandlers} position={dragLocation.controlledPosition} onDrag={onControlledDrag}>
       <div className = 'ui card feature'>
         <div className='content'>
           <i className="right floated cancel icon"></i>
