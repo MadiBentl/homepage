@@ -35,6 +35,8 @@ const notepadReducer = (state = initialState, action) => {
           note.name = action.data.name
         }
       })
+    case 'DELETE_NOTE':
+      return { ...state, notes: state.notes.filter(note => action.data.id !== note.id) }
     case 'DRAG_NOTE':
       return { ...state,
         notes: state.notes.map(note => {
@@ -76,5 +78,7 @@ export const toggleNotepad = () => {
 export const dragNote = (id, x, y) => {
   return({ type: 'DRAG_NOTE', data: { id, x, y } })
 }
-
+export const deleteNote = (id) => {
+  return({ type: 'DELETE_NOTE', data: { id } })
+}
 export default notepadReducer

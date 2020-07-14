@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { addNote, dragNote } from '../../reducers/notepad'
+import { addNote, dragNote, deleteNote } from '../../reducers/notepad'
 import Draggable from 'react-draggable'
 
 
@@ -41,7 +41,10 @@ const Note = ({ props }) => {
     <Draggable {...dragHandlers} handle="strong" position={dragLocation.controlledPosition} onDrag={onControlledDrag}>
       <div className = 'ui card feature'>
         <div className='content'>
-          <i className="right floated window close outline large icon"></i>
+          <i
+            className="right floated window close outline large icon"
+            onClick={() => dispatch(deleteNote(props.id))}
+            ></i>
           <strong className="cursor"><i className="right floated hand rock outline icon large"></i></strong>
           <div
             className='header'
