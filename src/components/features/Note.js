@@ -7,7 +7,6 @@ import Draggable from 'react-draggable'
 const Note = ({ props }) => {
   const dispatch = useDispatch()
   const [content, setContent] = useState('')
-  const [header, setHeader] = useState('')
 
   const [dragLocation, setDragLocation] = useState({
     activeDrags: 0,
@@ -53,13 +52,6 @@ const Note = ({ props }) => {
             onClick={() => handleCancelClick()}
           ></i>
           <strong className="cursor"><i className="right floated hand rock outline icon large"></i></strong>
-          <div
-            className='header'
-            contentEditable="true"
-            suppressContentEditableWarning="true"
-            onChange={event => setHeader(event.target.value)}
-            placeholder={props.name}
-          >{ props.name }</div>
           <textarea
             value= {content}
             onChange={(event) => setContent(event.target.value)}
