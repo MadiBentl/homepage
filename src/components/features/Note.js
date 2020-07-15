@@ -37,14 +37,21 @@ const Note = ({ props }) => {
 
   const dragHandlers = { onStart, onStop }
 
+  const handleCancelClick = () => {
+    var confirmation = window.confirm('Do you want to delete this?')
+    if (confirmation){
+      dispatch(deleteNote(props.id))
+    }
+  }
+
   return(
     <Draggable {...dragHandlers} handle="strong" position={dragLocation.controlledPosition} onDrag={onControlledDrag}>
       <div className = 'ui card feature'>
         <div className='content'>
           <i
             className="right floated window close outline large icon"
-            onClick={() => dispatch(deleteNote(props.id))}
-            ></i>
+            onClick={() => handleCancelClick()}
+          ></i>
           <strong className="cursor"><i className="right floated hand rock outline icon large"></i></strong>
           <div
             className='header'

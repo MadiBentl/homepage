@@ -36,6 +36,9 @@ const notepadReducer = (state = initialState, action) => {
         }
       })
     case 'DELETE_NOTE':
+      if (state.notes.length === 1){
+        return initialState
+      }
       return { ...state, notes: state.notes.filter(note => action.data.id !== note.id) }
     case 'DRAG_NOTE':
       return { ...state,
