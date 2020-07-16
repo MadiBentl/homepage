@@ -1,3 +1,6 @@
+//Variables
+$primary-colour: #FFFBFF;
+$secondary-colour: #000500;
 * { box-sizing: border-box}
 h1, h2{
   margin-bottom: 0px !important;
@@ -6,7 +9,7 @@ h1, h2{
 #settings-modal{
   position: absolute;
   width: 500px;
-  background-color: white;
+  background-color: $primary-colour;
   margin-left: auto;
   margin-right: auto;
   top: 25%;
@@ -20,28 +23,27 @@ h1, h2{
   border:none;
   background-color: inherit;
   font-size:150%;
-  color: white;
+  color: $primary-colour;
   width:40%;
+  ::placeholder{
+    color: $primary-colour;
+  }
 }
-#imask-input ::placeholder{
-  color: white;
-}
-.card i {
-  color: grey;
-}
+
 .card {
-  color: black;
+  color: $secondary-colour;
   resize: both;
   overflow: auto;
-
+  i {
+    color: grey;
+  }
 }
 .login {
-  color: white;
+  color: $primary-colour;
   float:right;
   margin: 5px;
 }
 .header{
-  grid-area: header;
   text-align: center;
 }
 .logo{
@@ -49,44 +51,42 @@ h1, h2{
 }
 .tasklist{
   padding: 10px;
-  grid-area: feature;
   display: inline-block;
-}
-.cli input {
-  width: 90%;
-  color: white;
-  border: none;
-  background: transparent;
-  border-bottom: 3px solid white;
-  padding: 10px;
-  margin: 10px;
-  font-size: 25px
 }
 .task{
   display: block !important;
   margin-top: 10px !important;
 }
 .cli {
-  grid-area: cli;
   align-self: end;
+  input {
+    width: 90%;
+    color: $primary-colour;
+    border: none;
+    background: transparent;
+    border-bottom: 3px solid $primary-colour;
+    padding: 10px;
+    margin: 10px;
+    font-size: 25px
+  }
+  .divided.list{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+  .divided.list .item {
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100%;
+  }
 }
-.divided.list .item {
-  color: rgba(255, 255, 255, 0.3);
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100%;
-}
-.cli.divided.list{
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-}
+
 input:focus {
   outline: none;
 }
 .leftbar{
-  grid-area: leftbar;
   margin: 15px;
   padding: 10px;
 }
@@ -109,19 +109,16 @@ textarea {
   border: none;
 }
 .feature{
-  color: white;
-  justify-self:start;
+  color: $primary-colour;
   margin-left: 10px;
-  grid-area: feature;
-}
-.feature h1{
-  color: black;
+  h1{
+    color: $secondary-colour;
+  }
 }
 .react-draggable{
   max-width:25%
 }
 #footer{
-  grid-area: footer;
   align-self: end;
   margin: 3px;
   color:RGB(255, 255, 255, 0.7);
@@ -129,9 +126,9 @@ textarea {
   bottom: 0;
   left: 0;
   width: 100%;
-}
-#footer .active-feature{
-  color: white;
+  .active-feature{
+    color: $primary-colour;
+  }
 }
 #feature-links-container{
   display: inline-block;
@@ -144,9 +141,9 @@ textarea {
   display: inline-block;
   width: 33%;
   float: right;
-}
-#settings-link i.icon{
-  float: right;
+  i.icon{
+    float: right;
+  }
 }
 #photo-source {
   display: inline-block;
@@ -162,7 +159,4 @@ textarea {
 .text-strike{
   text-decoration: line-through;
   color: gray;
-}
-.sidebar{
-  grid-area: sidebar;
 }
