@@ -1,12 +1,9 @@
-* {
-  box-sizing: border-box;
-}
-
-h1, h2 {
+* { box-sizing: border-box}
+h1, h2{
   margin-bottom: 0px !important;
 }
 
-#settings-modal {
+#settings-modal{
   position: absolute;
   width: 500px;
   background-color: white;
@@ -16,54 +13,45 @@ h1, h2 {
   left: 0;
   right: 0;
 }
-
-#settings-text {
+#settings-text{
   text-align: center;
 }
-
-#imask-input {
-  border: none;
+#imask-input{
+  border:none;
   background-color: inherit;
-  font-size: 150%;
+  font-size:150%;
   color: white;
-  width: 40%;
+  width:40%;
 }
-
-#imask-input ::placeholder {
+#imask-input ::placeholder{
   color: white;
 }
-
 .card i {
   color: grey;
 }
-
 .card {
   color: black;
   resize: both;
   overflow: auto;
-}
 
+}
 .login {
   color: white;
-  float: right;
+  float:right;
   margin: 5px;
 }
-
-.header {
+.header{
   grid-area: header;
   text-align: center;
 }
-
-.logo {
+.logo{
   width: 50px;
 }
-
-.tasklist {
+.tasklist{
   padding: 10px;
   grid-area: feature;
   display: inline-block;
 }
-
 .cli input {
   width: 90%;
   color: white;
@@ -72,19 +60,16 @@ h1, h2 {
   border-bottom: 3px solid white;
   padding: 10px;
   margin: 10px;
-  font-size: 25px;
+  font-size: 25px
 }
-
-.task {
+.task{
   display: block !important;
   margin-top: 10px !important;
 }
-
 .cli {
   grid-area: cli;
   align-self: end;
 }
-
 .divided.list .item {
   color: rgba(255, 255, 255, 0.3);
   text-align: center !important;
@@ -92,35 +77,29 @@ h1, h2 {
   margin-right: auto !important;
   width: 100%;
 }
-
-.cli.divided.list {
+.cli.divided.list{
   margin-left: auto !important;
   margin-right: auto !important;
   text-align: center !important;
 }
-
 input:focus {
   outline: none;
 }
-
-.leftbar {
+.leftbar{
   grid-area: leftbar;
   margin: 15px;
   padding: 10px;
 }
-
 #settings-modal i {
   float: right;
 }
-
-.timer {
+.timer{
   border-radius: 500px;
   text-align: center;
   vertical-align: middle;
   padding: 30px;
   margin: auto;
 }
-
 textarea {
   outline: none;
   resize: none;
@@ -129,77 +108,61 @@ textarea {
   background-color: transparent;
   border: none;
 }
-
-.feature {
+.feature{
   color: white;
-  justify-self: start;
+  justify-self:start;
   margin-left: 10px;
   grid-area: feature;
 }
-
-.feature h1 {
+.feature h1{
   color: black;
 }
-
-.react-draggable {
-  max-width: 25%;
+.react-draggable{
+  max-width:25%
 }
-
-#footer {
+#footer{
   grid-area: footer;
   align-self: end;
   margin: 3px;
-  color: RGB(255, 255, 255, 0.7);
+  color:RGB(255, 255, 255, 0.7);
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
 }
-
-#footer .active-feature {
+#footer .active-feature{
   color: white;
 }
-
-#feature-links-container {
+#feature-links-container{
   display: inline-block;
   width: 33%;
 }
-
-#feature-links {
+#feature-links{
   text-align: center;
 }
-
-#settings-link {
+#settings-link{
   display: inline-block;
   width: 33%;
   float: right;
 }
-
-#settings-link i.icon {
+#settings-link i.icon{
   float: right;
 }
-
 #photo-source {
   display: inline-block;
-  width: 33%;
+  width: 33%
 }
-
 .canvas {
   height: 100% !important;
   background-size: cover;
 }
-
-.app {
+.app{
   height: 100vh;
 }
-
-.text-strike {
+.text-strike{
   text-decoration: line-through;
   color: gray;
 }
-
-.sidebar {
+.sidebar{
   grid-area: sidebar;
 }
-
-/*# sourceMappingURL=index.css.map */
