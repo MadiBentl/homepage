@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addNote, dragNote, deleteNote, editNote } from '../../reducers/notepad'
+import { addNote, dragNote, deleteNote, editNote, toggleImportance } from '../../reducers/notepad'
 import Draggable from 'react-draggable'
 
 
@@ -79,7 +79,7 @@ const Note = (props) => {
             </span>
           }
           <span>
-            <i className="star outline icon"></i>
+            <i className={`star icon ${props.note.important ? 'yellow' :''}`} onClick={() => dispatch(toggleImportance(props.note.id))}></i>
               Important
           </span>
         </div>

@@ -61,7 +61,7 @@ const SettingsModal = () => {
               </div>
             </div>
           </div>
-        <Login />
+          <Login />
         </div>
       </div>
     </div>,

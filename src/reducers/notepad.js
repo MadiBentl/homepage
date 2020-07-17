@@ -7,7 +7,8 @@ const initialState = {
     name: 'Notepad',
     content: '',
     id: generateId(),
-    location: { x: 0, y: 0 }
+    location: { x: 0, y: 0 },
+    important: false
   }],
   visible: false
 }
@@ -33,6 +34,15 @@ const notepadReducer = (state = initialState, action) => {
         if (note.id === action.data.id){
           return { ...note,
             content: action.data.content
+          }
+        }
+        return note
+      }) }
+    case 'TOGGLE_IMPORTANCE':
+      return { ...state, notes: state.notes.map(note => {
+        if (note.id === action.data.id){
+          return { ...note,
+            important: !note.important
           }
         }
         return note
@@ -75,8 +85,10 @@ export const addNote = (content) => {
   return({ type: 'ADD_NOTE', data:{ content } })
 }
 export const editNote = (content, id) => {
-  console.log(id, content)
   return ({ type: 'EDIT_NOTE', data: { content, id } })
+}
+export const toggleImportance = (id) => {
+  return ({ type: 'TOGGLE_IMPORTANCE', data: { id } })
 }
 export const toggleNotepad = () => {
   return({ type: 'TOGGLE_NOTEPAD' })
