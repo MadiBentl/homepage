@@ -44,7 +44,13 @@ const Note = ({ props }) => {
   }
 
   return(
-    <Draggable {...dragHandlers} handle="strong" position={dragLocation.controlledPosition} onDrag={onControlledDrag}>
+    <Draggable
+      {...dragHandlers}
+      handle="strong"
+      position={dragLocation.controlledPosition}
+      onDrag={onControlledDrag}
+      bounds="body"
+    >
       <div className = 'ui card feature'>
         <div className='content'>
           <i
