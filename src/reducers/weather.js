@@ -18,13 +18,6 @@ const weatherReducer = (state={ visible: false, celsius: true, loaded: false }, 
         visible: true,
         day: new Date()
       }
-    case 'UPDATE_WEATHER':
-      return {
-        ...state,
-        day: 'TBD',
-        temperature: 'TBD',
-        weather: 'TBD'
-      }
     case 'TOGGLE_WEATHER':
       return {
         ...state,
@@ -47,6 +40,7 @@ export const getWeather = () => {
       navigator.geolocation.getCurrentPosition(async position => {
         console.log(position)
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`)
+        dispatch({ type: 'SET_WEATHER_LOADING' })
         dispatch({
           type: 'INIT_WEATHER',
           data: response.data
