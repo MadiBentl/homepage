@@ -25,9 +25,8 @@ const SettingsModal = () => {
             aria-hidden='true'
             onClick={() => dispatch(hideModal())}/>
           <div className='settings-text'>
-            <h2>Meet your new dashboard</h2>
-            <p>Haro was born to wed a command-line interface with near unlimited customizability.
-          If you&apos;re new to Haro, we suggest checking out our in-browser Haro Tutorial</p>
+            <h2>About Haro</h2>
+            <p>Haro adds some much-needed style & functionality to your browser. Meet Haro: Your new homepage. </p>
             <Login />
           </div>
           <h2>Settings</h2>
