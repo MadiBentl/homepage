@@ -73,32 +73,6 @@ label:hover i.delete-x {
   display: inline;
 }
 
-.cli {
-  align-self: end;
-}
-.cli input {
-  width: 90%;
-  color: #FFFBFF;
-  border: none;
-  background: transparent;
-  border-bottom: 3px solid #FFFBFF;
-  padding: 10px;
-  margin: 10px;
-  font-size: 25px;
-}
-.cli .divided.list {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-}
-.cli .divided.list .item {
-  color: rgba(255, 255, 255, 0.3);
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100%;
-}
-
 input:focus {
   outline: none;
 }

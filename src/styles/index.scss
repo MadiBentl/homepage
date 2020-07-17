@@ -63,32 +63,6 @@ label i.delete-x{
 label:hover i.delete-x{
   display:inline;
 }
-.cli {
-  align-self: end;
-  input {
-    width: 90%;
-    color: $primary-colour;
-    border: none;
-    background: transparent;
-    border-bottom: 3px solid $primary-colour;
-    padding: 10px;
-    margin: 10px;
-    font-size: 25px
-  }
-  .divided.list{
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-  }
-  .divided.list .item {
-    color: rgba(255, 255, 255, 0.3);
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: 100%;
-  }
-}
-
 input:focus {
   outline: none;
 }
