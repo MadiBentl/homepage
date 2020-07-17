@@ -1,6 +1,7 @@
 //Variables
 $primary-colour: #FFFBFF;
 $secondary-colour: #000500;
+$primary-offset-colour: #e6e6e6;
 * { box-sizing: border-box}
 h1, h2{
   margin-bottom: 0px !important;
@@ -52,6 +53,8 @@ h1, h2{
 .ui.card.tasklist {
   padding: 10px;
   background: transparentize($primary-colour, 0.1);
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, $primary-offset-colour 2px, transparent 1px), linear-gradient(to bottom, $primary-offset-colour 2px, transparent 2px);
   resize:none;
   border:none;
 }

@@ -58,6 +58,8 @@ h1, h2 {
 .ui.card.tasklist {
   padding: 10px;
   background: rgba(255, 251, 255, 0.9);
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, #e6e6e6 2px, transparent 1px), linear-gradient(to bottom, #e6e6e6 2px, transparent 2px);
   resize: none;
   border: none;
 }
