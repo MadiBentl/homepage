@@ -1,9 +1,15 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getWeather } from '../../reducers/weather'
 
 const Weather = () => {
   const weatherData = useSelector(state => state.weather)
+  const dispatch = useDispatch()
+
   console.log(weatherData)
+  useEffect(() => {
+    dispatch(getWeather())
+  }, [])
 
   const tempToDisplay = () => {
     if (weatherData.celsius){

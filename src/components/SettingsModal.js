@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { toggleCelsius } from '../reducers/weather'
 import { useSelector, useDispatch } from 'react-redux'
 import { hideModal } from '.././reducers/settings'
+import Login from './Login'
 
 const SettingsModal = () => {
   const dispatch = useDispatch()
@@ -27,6 +28,7 @@ const SettingsModal = () => {
             <h2>Meet your new dashboard</h2>
             <p>Haro was born to wed a command-line interface with near unlimited customizability.
           If you&apos;re new to Haro, we suggest checking out our in-browser Haro Tutorial</p>
+            <Login />
           </div>
           <h2>Settings</h2>
           <div className='ui list'>

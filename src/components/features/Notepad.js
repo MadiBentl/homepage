@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import Note from './Note'
 
@@ -6,7 +6,6 @@ import Note from './Note'
 const Notepad = () => {
 
   const notepadData = useSelector(state => state.notepad)
-  console.log(notepadData)
   return(
     <>
       {notepadData.notes.map(note => {
