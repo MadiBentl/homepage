@@ -73,7 +73,7 @@ const Note = (props) => {
               Create new Note
               <i className="plus icon" onClick={() => dispatch(addNote())}></i>
             </span>
-            : <span className="right floated">
+            : <span className="right floated disabled">
               Max 4 Notes
               <i className="plus icon"></i>
             </span>

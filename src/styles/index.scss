@@ -17,6 +17,9 @@ h1, h2{
   left: 0;
   right: 0;
 }
+.disabled, .disabled .plus.icon{
+  color: rgba($secondary-colour, 0.2);
+}
 #settings-text{
   text-align: center;
 }

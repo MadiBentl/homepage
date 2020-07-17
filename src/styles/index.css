@@ -17,6 +17,10 @@ h1, h2 {
   right: 0;
 }
 
+.disabled, .disabled .plus.icon {
+  color: rgba(0, 5, 0, 0.2);
+}
+
 #settings-text {
   text-align: center;
 }
