@@ -27,7 +27,6 @@ const SettingsModal = () => {
           <div className='settings-text'>
             <h2>About Haro</h2>
             <p>Haro adds some much-needed style & functionality to your browser. Meet Haro: Your new homepage. </p>
-            <Login />
           </div>
           <h2>Settings</h2>
           <div className='ui list'>
@@ -62,6 +61,7 @@ const SettingsModal = () => {
               </div>
             </div>
           </div>
+        <Login />
         </div>
       </div>
     </div>,
