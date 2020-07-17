@@ -10,7 +10,8 @@ const getDate = () => {
 const initialState = {
   name: getDate(),
   visible: false,
-  tasks: []
+  tasks: [],
+  location: { x: 0, y: 0 }
 }
 
 const taskList = (state = initialState, action) => {
@@ -35,6 +36,8 @@ const taskList = (state = initialState, action) => {
           return task
         }
       }) }
+    case 'DRAG_TASKLIST':
+      return { ...state, location: { x: action.data.x, y: action.data.y } }
     default:
       return state
   }
@@ -54,6 +57,9 @@ export const addTask = (content) => {
 }
 export const toggleTask = (id) => {
   return({ type: 'TOGGLE_TASK_STATUS', data:{ id } })
+}
+export const dragTaskList = (x, y) => {
+  return ({ type: 'DRAG_TASKLIST', data: { x, y } })
 }
 
 export default taskList

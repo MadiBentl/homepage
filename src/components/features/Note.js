@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNote, dragNote, deleteNote } from '../../reducers/notepad'
 import Draggable from 'react-draggable'
