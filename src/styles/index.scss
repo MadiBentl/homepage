@@ -52,6 +52,11 @@ h1, h2{
 }
 .ui.card.tasklist {
   padding: 10px;
+  height: 100vh;
+  position: absolute;
+  top:0px;
+  margin:0px;
+  border-radius:none;
   background: transparentize($primary-colour, 0.1);
   background-size: 30px 30px;
   background-image: linear-gradient(to right, $primary-offset-colour 2px, transparent 1px), linear-gradient(to bottom, $primary-offset-colour 2px, transparent 2px);

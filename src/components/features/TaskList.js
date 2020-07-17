@@ -48,48 +48,16 @@ const TaskList = () => {
   const dispatch = useDispatch()
   const [newTask, setNewTask] = useState('')
 
-  const [dragLocation, setDragLocation] = useState({
-    activeDrags: 0,
-    deltaPosition: {
-      x: 0, y: 0
-    },
-    controlledPosition: {
-      x: taskData.location.x, y: taskData.location.y
-    }
-  })
-
-  const onStart = () => {
-    setDragLocation({ ...dragLocation, activeDrags: ++dragLocation.activeDrags })
-  }
-
-  const onStop = () => {
-    console.log(dragLocation)
-    setDragLocation({ ...dragLocation, activeDrags:--dragLocation.activeDrags })
-    console.log(dragLocation.controlledPosition.x, dragLocation.controlledPosition.y)
-    dispatch(dragTaskList(dragLocation.controlledPosition.x, dragLocation.controlledPosition.y))
-  }
-
-  const onControlledDrag = (e, position) => {
-    const { x, y } = position
-    setDragLocation({ ...dragLocation, controlledPosition: { x, y } })
-  }
-
-  const dragHandlers = { onStart, onStop }
-
-
   return(
-    <Draggable {...dragHandlers} handle="strong" position={dragLocation.controlledPosition} onDrag={onControlledDrag}>
-      <div className="ui card tasklist">
-        <div className='content'>
-          <strong className="cursor"><i className="right floated hand rock outline icon large"></i></strong>
-          <div className='header'>TaskList for {taskData.name}</div>
-          {taskData.tasks.map(task => {
-            return <Task key={task.id} task={task} />
-          })}
-          <NewTask setNewTask={setNewTask} newTask={newTask}/>
-        </div>
+    <div className="ui card tasklist">
+      <div className='content'>
+        <div className='header'>TaskList for {taskData.name}</div>
+        {taskData.tasks.map(task => {
+          return <Task key={task.id} task={task} />
+        })}
+        <NewTask setNewTask={setNewTask} newTask={newTask}/>
       </div>
-    </Draggable>
+    </div>
   )
 }
 
