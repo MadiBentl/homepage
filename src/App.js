@@ -24,11 +24,10 @@ const App = () => {
     <div className='app'>
       <Canvas>
         <SettingsModal />
-        <Header />
+        <Header weatherVis={weather.visible}/>
         { taskList.visible ? <TaskList /> : null}
         { timer.visible ? <div><Timer /></div> : null}
         { notepad.visible ? <div><Notepad /></div> : null}
-        { weather.visible ? <div><Weather /></div> : null}
         <Footer source={image.source} />
       </Canvas>
     </div>

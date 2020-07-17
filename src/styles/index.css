@@ -113,6 +113,10 @@ textarea {
   color: #000500;
 }
 
+.weather.feature h1 {
+  color: #FFFBFF;
+}
+
 .react-draggable {
   max-width: 25%;
 }
