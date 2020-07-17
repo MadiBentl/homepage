@@ -42,10 +42,13 @@ const Login = () => {
       return null
     }
     if (user){
-      return <div onClick= {handleLogout}>Logout</div>
+      return <div className='ui google plus button' onClick={handleLogout}>Logout</div>
     }else{
       return(
-        <div onClick= {handleLogin}>Login</div>
+        <button className='ui google plus button' onClick={handleLogin}>
+          <i className="google icon"></i>
+          Login with Google
+        </button>
       )
     }
   }

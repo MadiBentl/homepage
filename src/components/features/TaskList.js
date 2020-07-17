@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleTask, addTask, dragTaskList, deleteTask } from '../../reducers/tasklist'
+import { toggleTask, addTask, toggleTasklist, deleteTask } from '../../reducers/tasklist'
 import Draggable from 'react-draggable'
 
 const Task = ({ task }) => {
@@ -56,6 +56,14 @@ const TaskList = () => {
           return <Task key={task.id} task={task} />
         })}
         <NewTask setNewTask={setNewTask} newTask={newTask}/>
+      </div>
+      <div className='extra content'>
+        <div className='center aligned'>
+          <i
+            className='icon arrow alternate circle left outline large'
+            onClick={() => dispatch(toggleTasklist())}
+          />
+        </div>
       </div>
     </div>
   )

@@ -61,7 +61,7 @@ h1, h2 {
   position: absolute;
   top: 0px;
   margin: 0px;
-  border-radius: none;
+  border-radius: 0px;
   background: rgba(255, 251, 255, 0.9);
   background-size: 30px 30px;
   background-image: linear-gradient(to right, #e6e6e6 2px, transparent 1px), linear-gradient(to bottom, #e6e6e6 2px, transparent 2px);
@@ -72,6 +72,9 @@ h1, h2 {
 .task {
   display: block !important;
   margin-top: 10px !important;
+}
+.task input::placeholder {
+  color: #FFFBFF;
 }
 
 label i.delete-x {
@@ -91,7 +94,7 @@ input:focus {
   padding: 10px;
 }
 
-#settings-modal i {
+#settings-modal i.close {
   float: right;
 }
 
