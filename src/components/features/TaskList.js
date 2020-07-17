@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleTask, addTask, dragTaskList } from '../../reducers/tasklist'
+import { toggleTask, addTask, dragTaskList, deleteTask } from '../../reducers/tasklist'
 import Draggable from 'react-draggable'
 
 const Task = ({ task }) => {
   const dispatch = useDispatch()
+
+  const handleDeleteClick = id => {
+    dispatch(deleteTask(id))
+  }
 
   return (
     <div className = 'ui checkbox task'>
       <input type='checkbox' onClick = {() => dispatch(toggleTask(task.id))}/>
       <label className={task.complete ? 'text-strike' : null} name={`${task.content}`}>
         {task.content}
-        <i className="delete-x close icon"></i>
+        <i className="delete-x close icon" onClick={() => handleDeleteClick(task.id)}></i>
       </label>
     </div>
   )

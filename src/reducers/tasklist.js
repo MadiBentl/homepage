@@ -38,6 +38,8 @@ const taskList = (state = initialState, action) => {
       }) }
     case 'DRAG_TASKLIST':
       return { ...state, location: { x: action.data.x, y: action.data.y } }
+    case 'DELETE_TASK':
+      return { ...state, tasks: state.tasks.filter(task => action.data.id !== task.id) }
     default:
       return state
   }
@@ -60,6 +62,9 @@ export const toggleTask = (id) => {
 }
 export const dragTaskList = (x, y) => {
   return ({ type: 'DRAG_TASKLIST', data: { x, y } })
+}
+export const deleteTask = (id) => {
+  return ({ type: 'DELETE_TASK', data: { id } })
 }
 
 export default taskList
