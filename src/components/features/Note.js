@@ -4,9 +4,9 @@ import { addNote, dragNote, deleteNote, editNote } from '../../reducers/notepad'
 import Draggable from 'react-draggable'
 
 
-const Note = ({ props }) => {
+const Note = (props) => {
   const dispatch = useDispatch()
-  const [content, setContent] = useState(props.content)
+  const [content, setContent] = useState(props.note.content)
 
   const [dragLocation, setDragLocation] = useState({
     activeDrags: 0,
@@ -14,7 +14,7 @@ const Note = ({ props }) => {
       x: 0, y: 0
     },
     controlledPosition: {
-      x: props.location.x, y: props.location.y
+      x: props.note.location.x, y: props.note.location.y
     }
   })
 
@@ -26,7 +26,7 @@ const Note = ({ props }) => {
     console.log(dragLocation)
     setDragLocation({ ...dragLocation, activeDrags:--dragLocation.activeDrags })
     console.log(dragLocation.controlledPosition.x, dragLocation.controlledPosition.y)
-    dispatch(dragNote(props.id, dragLocation.controlledPosition.x, dragLocation.controlledPosition.y))
+    dispatch(dragNote(props.note.id, dragLocation.controlledPosition.x, dragLocation.controlledPosition.y))
   }
 
   const onControlledDrag = (e, position) => {
@@ -39,9 +39,10 @@ const Note = ({ props }) => {
   const handleCancelClick = () => {
     var confirmation = window.confirm('Do you want to delete this?')
     if (confirmation){
-      dispatch(deleteNote(props.id))
+      dispatch(deleteNote(props.note.id))
     }
   }
+  console.log(props)
 
   return(
     <Draggable
@@ -61,16 +62,22 @@ const Note = ({ props }) => {
           <textarea
             value= {content}
             onChange={(event) => setContent(event.target.value)}
-            onBlur={() => dispatch(editNote(content, props.id))}
+            onBlur={() => dispatch(editNote(content, props.note.id))}
             placeholder='Write yourself a note!'
           >
           </textarea>
         </div>
         <div className = 'extra content'>
-          <span className="right floated">
-            Create new Note
-            <i className="plus icon" onClick={() => dispatch(addNote())}></i>
-          </span>
+          {props.canAddMoreNotes ?
+            <span className="right floated">
+              Create new Note
+              <i className="plus icon" onClick={() => dispatch(addNote())}></i>
+            </span>
+            : <span className="right floated">
+              Max 4 Notes
+              <i className="plus icon"></i>
+            </span>
+          }
           <span>
             <i className="star outline icon"></i>
               Important
