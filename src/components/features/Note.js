@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addNote, dragNote, deleteNote } from '../../reducers/notepad'
+import { addNote, dragNote, deleteNote, editNote } from '../../reducers/notepad'
 import Draggable from 'react-draggable'
 
 
 const Note = ({ props }) => {
   const dispatch = useDispatch()
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState(props.content)
 
   const [dragLocation, setDragLocation] = useState({
     activeDrags: 0,
@@ -55,6 +55,7 @@ const Note = ({ props }) => {
           <textarea
             value= {content}
             onChange={(event) => setContent(event.target.value)}
+            onBlur={() => dispatch(editNote(content, props.id))}
             placeholder='Write yourself a note!'
           >
           </textarea>
@@ -66,7 +67,7 @@ const Note = ({ props }) => {
           </span>
           <span>
             <i className="star outline icon"></i>
-              Favourite
+              Important
           </span>
         </div>
       </div>

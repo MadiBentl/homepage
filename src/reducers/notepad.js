@@ -29,12 +29,14 @@ const notepadReducer = (state = initialState, action) => {
         location: { x: 0, y: 0 }
       }) }
     case 'EDIT_NOTE':
-      return state.notes.map(note => {
+      return { ...state, notes: state.notes.map(note => {
         if (note.id === action.data.id){
-          note.content = action.data.content
-          note.name = action.data.name
+          return { ...note,
+            content: action.data.content
+          }
         }
-      })
+        return note
+      }) }
     case 'DELETE_NOTE':
       if (state.notes.length === 1){
         return initialState
@@ -72,7 +74,8 @@ export const showNotepad = () => {
 export const addNote = (content) => {
   return({ type: 'ADD_NOTE', data:{ content } })
 }
-export const editNote = (content, name, id) => {
+export const editNote = (content, id) => {
+  console.log(id, content)
   return ({ type: 'EDIT_NOTE', data: { content, id } })
 }
 export const toggleNotepad = () => {

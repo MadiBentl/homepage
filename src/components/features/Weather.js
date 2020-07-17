@@ -27,7 +27,7 @@ const Weather = () => {
   }
 
   return (
-    <div className='feature little-feature'>
+    <div className='feature weather'>
       <h1>{tempToDisplay()}&deg;</h1>
       <p>{weatherData.weather}</p>
     </div>
