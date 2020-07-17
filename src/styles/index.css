@@ -65,6 +65,14 @@ h1, h2 {
   margin-top: 10px !important;
 }
 
+label i.delete-x {
+  display: none;
+}
+
+label:hover i.delete-x {
+  display: inline;
+}
+
 .cli {
   align-self: end;
 }

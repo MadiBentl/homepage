@@ -9,7 +9,10 @@ const Task = ({ task }) => {
   return (
     <div className = 'ui checkbox task'>
       <input type='checkbox' onClick = {() => dispatch(toggleTask(task.id))}/>
-      <label className={task.complete ? 'text-strike' : null} name={`${task.content}`}> {task.content}</label>
+      <label className={task.complete ? 'text-strike' : null} name={`${task.content}`}>
+        {task.content}
+        <i className="delete-x close icon"></i>
+      </label>
     </div>
   )
 }
