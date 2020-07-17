@@ -49,9 +49,11 @@ h1, h2{
 .logo{
   width: 50px;
 }
-.tasklist{
+.ui.card.tasklist {
   padding: 10px;
-  display: inline-block;
+  background: transparentize($primary-colour, 0.1);
+  resize:none;
+  border:none;
 }
 .task{
   display: block !important;
