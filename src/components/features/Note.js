@@ -79,7 +79,7 @@ const Note = (props) => {
             </span>
           }
           <span>
-            <i className={`star icon ${props.note.important ? 'yellow' :''}`} onClick={() => dispatch(toggleImportance(props.note.id))}></i>
+            <i className={`star icon ${props.note.important ? 'yellow' :''}`} onClick={() => dispatch(toggleImportance(props.note))}></i>
               Important
           </span>
         </div>
