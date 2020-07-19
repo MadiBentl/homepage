@@ -89,8 +89,11 @@ export const addNote = () => {
     dispatch({ type: 'ADD_NOTE', data: newNote })
   }
 }
-export const editNote = (content, id) => {
-  return ({ type: 'EDIT_NOTE', data: { content, id } })
+export const editNote = (content, note) => {
+  return async dispatch => {
+    const editedNote = await noteService.editNote({ ...note, content })
+    dispatch({ type: 'EDIT_NOTE', data: editedNote })
+  }
 }
 export const toggleImportance = (id) => {
   return ({ type: 'TOGGLE_IMPORTANCE', data: { id } })

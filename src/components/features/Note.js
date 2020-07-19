@@ -62,7 +62,7 @@ const Note = (props) => {
           <textarea
             value= {content}
             onChange={(event) => setContent(event.target.value)}
-            onBlur={() => dispatch(editNote(content, props.note.id))}
+            onBlur={() => dispatch(editNote(content, props.note))}
             placeholder='Write yourself a note!'
           >
           </textarea>
