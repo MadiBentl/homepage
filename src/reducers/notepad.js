@@ -1,10 +1,11 @@
+import noteService from '../services/notes'
+
 const generateId = () => {
   return Math.round(Math.random() * 9999999999)
 }
 
 const initialState = {
   notes: [{
-    name: 'Notepad',
     content: '',
     id: generateId(),
     location: { x: 0, y: 0 },
@@ -24,10 +25,10 @@ const notepadReducer = (state = initialState, action) => {
       return { ...state, visible: !state.visible }
     case 'ADD_NOTE':
       return { ...state, notes: state.notes.concat({
-        name: 'Notepad',
         content: action.data.content,
-        id: generateId(),
-        location: { x: 0, y: 0 }
+        id: action.data.id,
+        important: action.data.important,
+        location: action.data.location
       }) }
     case 'EDIT_NOTE':
       return { ...state, notes: state.notes.map(note => {
@@ -81,8 +82,12 @@ export const hideNotepad = () => {
 export const showNotepad = () => {
   return({ type: 'SHOW_NOTEPAD' })
 }
-export const addNote = (content) => {
-  return({ type: 'ADD_NOTE', data:{ content } })
+export const addNote = () => {
+  return async dispatch => {
+    const newNote = await noteService.addNote({ content: '', location: { x: 0, y: 0 } })
+    console.log(newNote)
+    dispatch({ type: 'ADD_NOTE', data: newNote })
+  }
 }
 export const editNote = (content, id) => {
   return ({ type: 'EDIT_NOTE', data: { content, id } })

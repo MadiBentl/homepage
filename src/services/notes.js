@@ -1,8 +1,9 @@
 import axios from 'axios'
-const baseUrl = '/api/notes'
+const baseUrl = '/api/notes/'
 
-const addNote = async(note) => {
-  const response = await axios.post(baseUrl, note)
+const addNote = async(content) => {
+  console.log('content', content)
+  const response = await axios.post(baseUrl, content)
   return response.data
 }
 const deleteNote = async(id) => {
