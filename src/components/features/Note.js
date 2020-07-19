@@ -26,7 +26,7 @@ const Note = (props) => {
     console.log(dragLocation)
     setDragLocation({ ...dragLocation, activeDrags:--dragLocation.activeDrags })
     console.log(dragLocation.controlledPosition.x, dragLocation.controlledPosition.y)
-    dispatch(dragNote(props.note.id, dragLocation.controlledPosition.x, dragLocation.controlledPosition.y))
+    dispatch(dragNote(props.note, dragLocation.controlledPosition.x, dragLocation.controlledPosition.y))
   }
 
   const onControlledDrag = (e, position) => {

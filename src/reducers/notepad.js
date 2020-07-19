@@ -104,8 +104,11 @@ export const toggleImportance = (note) => {
 export const toggleNotepad = () => {
   return({ type: 'TOGGLE_NOTEPAD' })
 }
-export const dragNote = (id, x, y) => {
-  return({ type: 'DRAG_NOTE', data: { id, x, y } })
+export const dragNote = (note, x, y) => {
+  return async dispatch => {
+    const draggedNote = await noteService.editNote({ ...note, location: { x, y } })
+    dispatch({ type: 'DRAG_NOTE', data: { ...draggedNote } })
+  }
 }
 export const deleteNote = (id) => {
   return({ type: 'DELETE_NOTE', data: { id } })
