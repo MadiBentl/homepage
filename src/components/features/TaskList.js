@@ -51,19 +51,16 @@ const TaskList = () => {
   return(
     <div className="ui card tasklist">
       <div className='content'>
+        <i
+          className='right floated icon close large'
+          onClick={() => dispatch(toggleTasklist())}
+        />
         <div className='header'>TaskList for {taskData.name}</div>
+
         {taskData.tasks.map(task => {
           return <Task key={task.id} task={task} />
         })}
         <NewTask setNewTask={setNewTask} newTask={newTask}/>
-      </div>
-      <div className='extra content'>
-        <div className='center aligned'>
-          <i
-            className='icon arrow alternate circle left outline large'
-            onClick={() => dispatch(toggleTasklist())}
-          />
-        </div>
       </div>
     </div>
   )

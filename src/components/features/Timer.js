@@ -67,7 +67,7 @@ const Timer = () => {
 
   if (timerData.initialTime === null){
     return(
-      <div className = 'feature timer sidebar'>
+      <div className = 'ui circular timer segment'>
         <form onSubmit = {(e) => handleButtonClick(e)}>
           <IMaskInput
             id='imask-input'
@@ -86,11 +86,11 @@ const Timer = () => {
             placeholder='00:00:00'
           />
         </form>
-        <p>Enter Time</p>
+        <div className='sub header'>Enter Time</div>
       </div>)
   }
   return(
-    <div className = 'feature timer sidebar'>
+    <div className = 'ui circular timer segment timer'>
       <h2>{ formatTime(distance) }</h2>
       <p>{ timerData.name }</p>
       <div>

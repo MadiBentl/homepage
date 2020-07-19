@@ -100,13 +100,6 @@ input:focus {
 #settings-modal i.close {
   float: right;
 }
-.timer{
-  border-radius: 500px;
-  text-align: center;
-  vertical-align: middle;
-  padding: 30px;
-  margin: auto;
-}
 textarea {
   outline: none;
   resize: none;
@@ -121,6 +114,10 @@ textarea {
   h1{
     color: $secondary-colour;
   }
+}
+.ui.circular.timer{
+  float: right;
+  padding: 0em;
 }
 .weather.feature h1{
   color: $primary-colour
