@@ -42,7 +42,6 @@ const Note = (props) => {
       dispatch(deleteNote(props.note.id))
     }
   }
-  console.log(props)
 
   return(
     <Draggable

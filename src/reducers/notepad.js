@@ -1,16 +1,7 @@
 import noteService from '../services/notes'
 
-const generateId = () => {
-  return Math.round(Math.random() * 9999999999)
-}
-
 const initialState = {
-  notes: [{
-    content: '',
-    id: generateId(),
-    location: { x: 0, y: 0 },
-    important: false
-  }],
+  notes: [],
   visible: false
 }
 const notepadReducer = (state = initialState, action) => {
@@ -102,7 +93,14 @@ export const toggleImportance = (note) => {
   }
 }
 export const toggleNotepad = () => {
-  return({ type: 'TOGGLE_NOTEPAD' })
+  return async (dispatch, getState) => {
+    const { notepad } = getState()
+    if (notepad.notes.length === 0){
+      const newNote = await noteService.addNote({ content: '', location: { x: 0, y: 0 } })
+      dispatch({ type: 'ADD_NOTE', data: newNote })
+    }
+    dispatch({ type: 'TOGGLE_NOTEPAD' })
+  }
 }
 export const dragNote = (note, x, y) => {
   return async dispatch => {
