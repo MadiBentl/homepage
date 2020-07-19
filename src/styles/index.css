@@ -18,7 +18,7 @@ h1, h2 {
 }
 
 .disabled, .disabled .plus.icon {
-  color: rgba(0, 5, 0, 0.2);
+  color: rgba(34, 136, 85, 0.2);
 }
 
 #settings-text {
@@ -37,7 +37,7 @@ h1, h2 {
 }
 
 .card {
-  color: #000500;
+  color: #228855;
   resize: both;
   overflow: auto;
 }
@@ -129,7 +129,7 @@ textarea {
   margin-left: 10px;
 }
 .feature h1 {
-  color: #000500;
+  color: #228855;
 }
 
 .ui.circular.timer {

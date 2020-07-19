@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleTask, addTask, toggleTasklist, deleteTask } from '../../reducers/tasklist'
-import Draggable from 'react-draggable'
 
 const Task = ({ task }) => {
   const dispatch = useDispatch()

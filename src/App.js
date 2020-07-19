@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import Draggable from 'react-draggable'
 
 import Canvas from './components/Canvas'
 import Timer from './components/features/Timer'
 import Notepad from './components/features/Notepad'
 import TaskList from './components/features/TaskList'
-import Weather from './components/features/Weather'
 import Header from './components/Header'
 import SettingsModal from './components/SettingsModal'
 import Footer from './components/Footer'
