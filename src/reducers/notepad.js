@@ -85,7 +85,7 @@ export const showNotepad = () => {
 }
 export const addNote = () => {
   return async dispatch => {
-    const newNote = await noteService.addNote({ content: '', location: { x: 0, y: 0 } })
+    const newNote = await noteService.addNote({ content: '', location: { x: 300, y: 0 } })
     console.log(newNote)
     dispatch({ type: 'ADD_NOTE', data: newNote })
   }
