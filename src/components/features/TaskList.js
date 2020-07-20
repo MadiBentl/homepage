@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleTask, addTask, toggleTasklist, deleteTask } from '../../reducers/tasklist'
 
@@ -46,9 +46,17 @@ const TaskList = () => {
   const taskData = useSelector(state => state.taskList)
   const dispatch = useDispatch()
   const [newTask, setNewTask] = useState('')
+  const wrapper = useRef()
+
+  useEffect(() => {
+    console.log(wrapper)
+    wrapper.current.classList.toggle('is-open')
+  }, [taskData.visible])
+
+  console.log(taskData.visible)
 
   return(
-    <div className="ui card tasklist">
+    <div className='ui card tasklist is-open' ref={wrapper}>
       <div className='content'>
         <i
           className='right floated icon close large'

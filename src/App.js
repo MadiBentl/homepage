@@ -14,7 +14,6 @@ const App = () => {
 
   const timer = useSelector(state => state.timer)
   const notepad = useSelector(state => state.notepad)
-  const taskList = useSelector(state => state.taskList)
   const weather = useSelector(state => state.weather)
   const image = useSelector(state => state.canvas)
 
@@ -23,7 +22,7 @@ const App = () => {
       <Canvas>
         <SettingsModal />
         <Header weatherVis={weather.visible}/>
-        { taskList.visible ? <TaskList /> : null}
+        <TaskList />
         { timer.visible ? <div><Timer /></div> : null}
         { notepad.visible ? <div><Notepad /></div> : null}
         <Footer source={image.source} />
