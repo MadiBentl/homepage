@@ -6,14 +6,14 @@ const initialState = {
 }
 const notepadReducer = (state = initialState, action) => {
   switch(action.type){
-    case 'CREATE_NOTEPAD':
-      return { ...state, visible: true }
     case 'HIDE_NOTEPAD':
       return { ...state, visible: false }
     case 'SHOW_NOTEPAD':
       return { ...state, visible: true }
     case 'TOGGLE_NOTEPAD':
       return { ...state, visible: !state.visible }
+    case 'GET_NOTES':
+      return { ...state, notes: action.data.notes }
     case 'ADD_NOTE':
       return { ...state, notes: state.notes.concat({
         content: action.data.content,
@@ -63,9 +63,19 @@ const notepadReducer = (state = initialState, action) => {
       return state
   }
 }
-
-export const createNotepad = () => {
-  return({ type: 'CREATE_NOTEPAD' })
+export const fetchNotes = () => {
+  return async dispatch => {
+    let notes = await noteService.getNotes()
+    notes = notes.map(n => {
+      if(!n.location){
+        return { ...n, location: { x:0, y:0 } }
+      }else {
+        return { ...n }
+      }
+    })
+    console.log(notes)
+    dispatch({ type: 'GET_NOTES', data: { notes } })
+  }
 }
 export const hideNotepad = () => {
   return({ type: 'HIDE_NOTEPAD' })
@@ -93,12 +103,7 @@ export const toggleImportance = (note) => {
   }
 }
 export const toggleNotepad = () => {
-  return async (dispatch, getState) => {
-    const { notepad } = getState()
-    if (notepad.notes.length === 0){
-      const newNote = await noteService.addNote({ content: '', location: { x: 0, y: 0 } })
-      dispatch({ type: 'ADD_NOTE', data: newNote })
-    }
+  return async (dispatch) => {
     dispatch({ type: 'TOGGLE_NOTEPAD' })
   }
 }
@@ -109,6 +114,9 @@ export const dragNote = (note, x, y) => {
   }
 }
 export const deleteNote = (id) => {
-  return({ type: 'DELETE_NOTE', data: { id } })
+  return async dispatch =>  {
+    await noteService.deleteNote(id)
+    dispatch({ type: 'DELETE_NOTE', data: { id } })
+  }
 }
 export default notepadReducer
