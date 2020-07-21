@@ -7,10 +7,13 @@ import Note from './Note'
 const Notepad = () => {
   const dispatch = useDispatch()
   const notepadData = useSelector(state => state.notepad)
+  const user = useSelector(state => state.admin.user)
 
   useEffect(() => {
-    dispatch(fetchNotes())
-  }, [])
+    if (user){
+      dispatch(fetchNotes())
+    }
+  }, [user, notepadData.visible])
 
   const canAddMoreNotes = notepadData.notes.length < 4 ? true : false
   const canDeleteNote = notepadData.notes.length === 1 ? false : true

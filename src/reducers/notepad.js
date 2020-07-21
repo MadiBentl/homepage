@@ -1,5 +1,7 @@
 import noteService from '../services/notes'
 
+const generateTempId = () => Math.floor(Math.random() * 99999999)
+
 const initialState = {
   notes: [],
   visible: false
@@ -67,9 +69,9 @@ const notepadReducer = (state = initialState, action) => {
   }
 }
 
-export const fetchNotes = () => {
+export const fetchNotes = (userId) => {
   return async dispatch => {
-    let notes = await noteService.getNotes()
+    let notes = await noteService.getNotes(userId)
     notes = notes.map(n => {
       if(!n.location){
         return { ...n, location: { x:300, y:0 } }
@@ -89,9 +91,14 @@ export const showNotepad = () => {
 }
 export const addNote = () => {
   return async dispatch => {
-    const newNote = await noteService.addNote({ content: '', location: { x: 300, y: 0 } })
-    console.log(newNote)
-    dispatch({ type: 'ADD_NOTE', data: newNote })
+    const loggedInUser = window.localStorage.getItem('loggedInUser')
+    if (loggedInUser){
+      const user = JSON.parse(loggedInUser)
+      const newNote = await noteService.addNote({ content: '', user, location: { x: 300, y: 0 } })
+      dispatch({ type: 'ADD_NOTE', data: newNote })
+    } else {
+      dispatch({ type: 'ADD_NOTE', data: { content: '', important: 'false', id: generateTempId() } })
+    }
   }
 }
 export const editNote = (content, note) => {
