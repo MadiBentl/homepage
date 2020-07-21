@@ -10,6 +10,7 @@ const Login = () => {
 
   useEffect(() => {
     const handleAuthChange = (isSignedIn) => {
+      console.log('is signed in', isSignedIn)
       if (isSignedIn){
         dispatch(setLogIn(auth.currentUser.get().getId()))
       }else{
@@ -32,15 +33,16 @@ const Login = () => {
   }, [auth, dispatch])
 
   const handleLogin = async() => {
-    auth.signIn()
+    try{
+      auth.signIn()
+    }catch(err){
+      console.log(err)
+    }
   }
   const handleLogout = () => {
     auth.signOut()
   }
   const renderAuthButton = () => {
-    if ( user === null){
-      return null
-    }
     if (user){
       return <div className='ui google plus button' onClick={handleLogout}>Logout</div>
     }else{

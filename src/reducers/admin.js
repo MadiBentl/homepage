@@ -1,3 +1,5 @@
+import loginService from '../services/admin'
+
 const adminReducer = (state = { user: null }, action ) => {
   switch(action.type){
     case 'LOGIN':
@@ -12,9 +14,23 @@ const adminReducer = (state = { user: null }, action ) => {
 }
 
 export const setLogIn = (userId) => {
-  return ({ type: 'LOGIN', data: { userId } })
+  return async dispatch => {
+    const users = await loginService.getUsers()
+    console.log('users', users)
+    if (!users.some(user => user.googleId === userId )){
+      try{
+        const newUser = await loginService.addUser({ user: userId })
+        console.log(newUser)
+      }catch(err){
+        console.log(err)
+      }
+    }
+    dispatch({ type: 'LOGIN', data: { userId } })
+    window.localStorage.setItem('loggedInUser', JSON.stringify(userId))
+  }
 }
 export const setLogOut = () => {
+  window.localStorage.removeItem('loggedInUser')
   return ({ type: 'LOGOUT' })
 }
 export const isNewDay = () => {
