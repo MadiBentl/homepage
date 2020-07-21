@@ -50,7 +50,10 @@ export const toggleTask = (task) => {
   }
 }
 export const deleteTask = (id) => {
-  return ({ type: 'DELETE_TASK', data: { id } })
+  return async dispatch => {
+    await taskService.deleteTask(id)
+    dispatch({ type: 'DELETE_TASK', data: { id } })
+  }
 }
 
 export default taskList

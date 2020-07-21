@@ -56,8 +56,6 @@ const TaskList = () => {
     wrapper.current.classList.toggle('is-open')
   }, [taskData.visible])
 
-  console.log(taskData.visible)
-
   return(
     <div className='ui card tasklist is-open' ref={wrapper}>
       <div className='content'>
