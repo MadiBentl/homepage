@@ -59,10 +59,14 @@ const notepadReducer = (state = initialState, action) => {
           return note
         })
       }
+    case 'LOGOUT': {
+      return initialState
+    }
     default:
       return state
   }
 }
+
 export const fetchNotes = () => {
   return async dispatch => {
     let notes = await noteService.getNotes()

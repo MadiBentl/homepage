@@ -5,7 +5,6 @@ import Draggable from 'react-draggable'
 
 
 const Note = (props) => {
-  console.log(props)
   const dispatch = useDispatch()
   const [content, setContent] = useState(props.note.content)
 
@@ -24,9 +23,7 @@ const Note = (props) => {
   }
 
   const onStop = () => {
-    console.log(dragLocation)
     setDragLocation({ ...dragLocation, activeDrags:--dragLocation.activeDrags })
-    console.log(dragLocation.controlledPosition.x, dragLocation.controlledPosition.y)
     dispatch(dragNote(props.note, dragLocation.controlledPosition.x, dragLocation.controlledPosition.y))
   }
 

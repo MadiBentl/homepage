@@ -44,12 +44,15 @@ const NewTask = ({ setNewTask, newTask }) => {
 
 const TaskList = () => {
   const taskData = useSelector(state => state.taskList)
+  const loggedIn = useSelector(state => state.admin.loggedIn)
   const dispatch = useDispatch()
   const [newTask, setNewTask] = useState('')
   const wrapper = useRef()
 
   useEffect(() => {
-    dispatch(fetchTasks())
+    if(loggedIn){
+      dispatch(fetchTasks())
+    }
   }, [])
 
   useEffect(() => {
