@@ -97,7 +97,7 @@ export const addNote = () => {
       const newNote = await noteService.addNote({ content: '', user, location: { x: 300, y: 0 } })
       dispatch({ type: 'ADD_NOTE', data: newNote })
     } else {
-      dispatch({ type: 'ADD_NOTE', data: { content: '', important: 'false', id: generateTempId() } })
+      dispatch({ type: 'ADD_NOTE', data: { content: '', location: { x: 300, y: 0 }, important: false, id: generateTempId() } })
     }
   }
 }
@@ -131,7 +131,10 @@ export const dragNote = (note, x, y) => {
 }
 export const deleteNote = (id) => {
   return async dispatch =>  {
-    await noteService.deleteNote(id)
+    const loggedInUser = window.localStorage.getItem('loggedInUser')
+    if (loggedInUser){
+      await noteService.deleteNote(id)
+    }
     dispatch({ type: 'DELETE_NOTE', data: { id } })
   }
 }
