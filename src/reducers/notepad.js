@@ -68,7 +68,7 @@ export const fetchNotes = () => {
     let notes = await noteService.getNotes()
     notes = notes.map(n => {
       if(!n.location){
-        return { ...n, location: { x:0, y:0 } }
+        return { ...n, location: { x:300, y:0 } }
       }else {
         return { ...n }
       }
