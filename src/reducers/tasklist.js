@@ -18,7 +18,7 @@ const taskList = (state = initialState, action) => {
     case 'TOGGLE_TASK_STATUS':
       return { ...state, tasks: state.tasks.map(task => {
         if (task.id === action.data.id) {
-          return { ...action.data.toggledTask }
+          return { ...action.data }
         }else{
           return task
         }
@@ -55,8 +55,16 @@ export const addTask = (content) => {
 }
 export const toggleTask = (task) => {
   return async dispatch => {
-    const toggledTask = await taskService.editTask(task)
-    dispatch({ type: 'TOGGLE_TASK_STATUS', data:{ toggledTask } })
+    const toggledTask = { ...task, complete: !task.complete }
+    const loggedInUser = window.localStorage.getItem('loggedInUser')
+    if (loggedInUser){
+      const completedTask = await taskService.editTask(task, toggledTask)
+      console.log(completedTask)
+      dispatch({ type: 'TOGGLE_TASK_STATUS', data:{ ...completedTask } })
+    }else{
+      console.log(task)
+      dispatch({ type: 'TOGGLE_TASK_STATUS', data: { ...toggledTask } })
+    }
   }
 }
 export const deleteTask = (id) => {
