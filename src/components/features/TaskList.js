@@ -44,16 +44,18 @@ const NewTask = ({ setNewTask, newTask }) => {
 
 const TaskList = () => {
   const taskData = useSelector(state => state.taskList)
-  const loggedIn = useSelector(state => state.admin.loggedIn)
+  const loggedIn = useSelector(state => state.admin.user)
   const dispatch = useDispatch()
   const [newTask, setNewTask] = useState('')
   const wrapper = useRef()
 
   useEffect(() => {
+    console.log(loggedIn, taskData.visible)
     if(loggedIn){
-      dispatch(fetchTasks())
+      console.log('fetching...')
+      dispatch(fetchTasks(loggedIn))
     }
-  }, [])
+  }, [loggedIn, taskData.visible])
 
   useEffect(() => {
     wrapper.current.classList.toggle('is-open')

@@ -29,9 +29,11 @@ const taskList = (state = initialState, action) => {
       return state
   }
 }
-export const fetchTasks = () => {
+export const fetchTasks = (id) => {
   return async dispatch => {
-    const tasks = await taskService.getTasks()
+    console.log('aminactioncreator')
+    const tasks = await taskService.getTasks(id)
+    console.log('tasks', tasks, id)
     dispatch({ type: 'FETCH_TASKS', data: { tasks } })
   }
 }

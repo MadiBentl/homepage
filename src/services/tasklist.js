@@ -13,8 +13,8 @@ const editTask = async(task) => {
   const response = await axios.put(`${baseUrl}${task.id}`)
   return response.data
 }
-const getTasks = async() => {
-  const response = await axios.get(baseUrl)
+const getTasks = async(id) => {
+  const response = await axios.get(baseUrl, id)
   return response.data
 }
 export default { getTasks, addTask, deleteTask, editTask }
