@@ -1,36 +1,22 @@
-const generateId = () => {
-  return Math.round(Math.random() * 9999999999)
-}
-
-const getDate = () => {
-  const date = String(new Date())
-  return date.split(' ').slice(0, 3).join(' ')
-}
+import taskService from '../services/tasklist'
 
 const initialState = {
-  name: getDate(),
   visible: false,
   tasks: [],
 }
 
 const taskList = (state = initialState, action) => {
   switch(action.type){
-    case 'CREATE_TASKLIST':
-      return { ...state, visible: true }
-    case 'DELETE_TASKLIST':
-      return {}
     case 'TOGGLE_TASKLIST':
       return { ...state, visible: !state.visible }
     case 'ADD_TASK':
-      return { ...state, tasks: state.tasks.concat({
-        content: action.data.content,
-        complete: false,
-        id: generateId()
-      }) }
+      return { ...state, tasks: state.tasks.concat({ ...action.data.newTask }) }
+    case 'FETCH_TASKS':
+      return { ...state, tasks: action.data.tasks }
     case 'TOGGLE_TASK_STATUS':
       return { ...state, tasks: state.tasks.map(task => {
         if (task.id === action.data.id) {
-          return { ...task, complete: !task.complete }
+          return { ...action.data.toggledTask }
         }else{
           return task
         }
@@ -41,21 +27,27 @@ const taskList = (state = initialState, action) => {
       return state
   }
 }
+export const fetchTasks = () => {
+  return async dispatch => {
+    const tasks = await taskService.getTasks()
+    dispatch({ type: 'FETCH_TASKS', data: { tasks } })
+  }
+}
 
-export const createTasklist = () => {
-  return({ type: 'CREATE_TASKLIST' })
-}
-export const deleteTasklist = () => {
-  return({ type: 'DELETE_TASKLIST' })
-}
 export const toggleTasklist = () => {
   return({ type: 'TOGGLE_TASKLIST' })
 }
 export const addTask = (content) => {
-  return({ type: 'ADD_TASK', data:{ content } })
+  return async dispatch => {
+    const newTask = await taskService.addTask({ content, complete: false })
+    dispatch({ type: 'ADD_TASK', data:{ newTask } })
+  }
 }
-export const toggleTask = (id) => {
-  return({ type: 'TOGGLE_TASK_STATUS', data:{ id } })
+export const toggleTask = (task) => {
+  return async dispatch => {
+    const toggledTask = await taskService.editTask(task)
+    dispatch({ type: 'TOGGLE_TASK_STATUS', data:{ toggledTask } })
+  }
 }
 export const deleteTask = (id) => {
   return ({ type: 'DELETE_TASK', data: { id } })

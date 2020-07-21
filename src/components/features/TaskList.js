@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleTask, addTask, toggleTasklist, deleteTask } from '../../reducers/tasklist'
+import { fetchTasks, toggleTask, addTask, toggleTasklist, deleteTask } from '../../reducers/tasklist'
 
 const Task = ({ task }) => {
   const dispatch = useDispatch()
@@ -11,7 +11,7 @@ const Task = ({ task }) => {
 
   return (
     <div className = 'ui checkbox task'>
-      <input type='checkbox' onClick = {() => dispatch(toggleTask(task.id))}/>
+      <input type='checkbox' onClick = {() => dispatch(toggleTask(task))}/>
       <label className={task.complete ? 'text-strike' : null} name={`${task.content}`}>
         {task.content}
         <i className="delete-x close icon" onClick={() => handleDeleteClick(task.id)}></i>
@@ -49,7 +49,10 @@ const TaskList = () => {
   const wrapper = useRef()
 
   useEffect(() => {
-    console.log(wrapper)
+    dispatch(fetchTasks())
+  }, [])
+
+  useEffect(() => {
     wrapper.current.classList.toggle('is-open')
   }, [taskData.visible])
 
