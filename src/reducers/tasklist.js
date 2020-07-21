@@ -31,9 +31,7 @@ const taskList = (state = initialState, action) => {
 }
 export const fetchTasks = (id) => {
   return async dispatch => {
-    console.log('aminactioncreator')
     const tasks = await taskService.getTasks(id)
-    console.log('tasks', tasks, id)
     dispatch({ type: 'FETCH_TASKS', data: { tasks } })
   }
 }
@@ -47,7 +45,6 @@ export const addTask = (content) => {
     if (loggedInUser){
       const user = JSON.parse(loggedInUser)
       const newTask = await taskService.addTask({ content, user, complete: false })
-      console.log('newtask', newTask)
       dispatch({ type: 'ADD_TASK', data:newTask })
     }else {
       dispatch({ type: 'ADD_TASK', data:{ content, complete: false } })

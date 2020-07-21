@@ -50,9 +50,7 @@ const TaskList = () => {
   const wrapper = useRef()
 
   useEffect(() => {
-    console.log(loggedIn, taskData.visible)
     if(loggedIn){
-      console.log('fetching...')
       dispatch(fetchTasks(loggedIn))
     }
   }, [loggedIn, taskData.visible])
@@ -68,7 +66,7 @@ const TaskList = () => {
           className='right floated icon close large'
           onClick={() => dispatch(toggleTasklist())}
         />
-        <div className='header'>TaskList for {taskData.name}</div>
+        <div className='header'>Task List</div>
 
         {taskData.tasks.map(task => {
           return <Task key={task.id} task={task} />
