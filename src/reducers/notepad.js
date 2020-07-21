@@ -120,8 +120,13 @@ export const toggleNotepad = () => {
 }
 export const dragNote = (note, x, y) => {
   return async dispatch => {
-    const draggedNote = await noteService.editNote({ ...note, location: { x, y } })
-    dispatch({ type: 'DRAG_NOTE', data: { ...draggedNote } })
+    const loggedInUser = window.localStorage.getItem('loggedInUser')
+    if (loggedInUser){
+      const draggedNote = await noteService.editNote({ ...note, location: { x, y } })
+      dispatch({ type: 'DRAG_NOTE', data: { ...draggedNote } })
+    } else {
+      dispatch({ type: 'DRAG_NOTE', data: { ...note, location: { x, y } } })
+    }
   }
 }
 export const deleteNote = (id) => {
