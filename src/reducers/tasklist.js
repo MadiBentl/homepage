@@ -1,5 +1,7 @@
 import taskService from '../services/tasklist'
 
+const generateTempId = () => Math.floor(Math.random() * 99999999)
+
 const initialState = {
   visible: false,
   tasks: [],
@@ -47,7 +49,7 @@ export const addTask = (content) => {
       const newTask = await taskService.addTask({ content, user, complete: false })
       dispatch({ type: 'ADD_TASK', data:newTask })
     }else {
-      dispatch({ type: 'ADD_TASK', data:{ content, complete: false } })
+      dispatch({ type: 'ADD_TASK', data:{ content, complete: false, id: generateTempId() } })
     }
   }
 }
