@@ -23,6 +23,8 @@ const taskList = (state = initialState, action) => {
       }) }
     case 'DELETE_TASK':
       return { ...state, tasks: state.tasks.filter(task => action.data.id !== task.id) }
+    case 'LOGOUT':
+      return initialState
     default:
       return state
   }
