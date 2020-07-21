@@ -10,7 +10,7 @@ const taskList = (state = initialState, action) => {
     case 'TOGGLE_TASKLIST':
       return { ...state, visible: !state.visible }
     case 'ADD_TASK':
-      return { ...state, tasks: state.tasks.concat({ ...action.data.newTask }) }
+      return { ...state, tasks: state.tasks.concat({ ...action.data }) }
     case 'FETCH_TASKS':
       return { ...state, tasks: action.data.tasks }
     case 'TOGGLE_TASK_STATUS':
@@ -41,8 +41,15 @@ export const toggleTasklist = () => {
 }
 export const addTask = (content) => {
   return async dispatch => {
-    const newTask = await taskService.addTask({ content, complete: false })
-    dispatch({ type: 'ADD_TASK', data:{ newTask } })
+    const loggedInUser = window.localStorage.getItem('loggedInUser')
+    if (loggedInUser){
+      const user = JSON.parse(loggedInUser)
+      const newTask = await taskService.addTask({ content, user, complete: false })
+      console.log('newtask', newTask)
+      dispatch({ type: 'ADD_TASK', data:newTask })
+    }else {
+      dispatch({ type: 'ADD_TASK', data:{ content, complete: false } })
+    }
   }
 }
 export const toggleTask = (task) => {
