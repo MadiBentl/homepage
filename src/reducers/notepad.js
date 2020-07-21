@@ -109,8 +109,13 @@ export const editNote = (content, note) => {
 }
 export const toggleImportance = (note) => {
   return async dispatch => {
-    const toggledImportance = await noteService.editNote({ ...note, importance: !note.importance })
-    dispatch({ type: 'TOGGLE_IMPORTANCE', data: { ...toggledImportance } })
+    const loggedInUser = window.localStorage.getItem('loggedInUser')
+    if (loggedInUser){
+      const toggledImportance = await noteService.editNote({ ...note, importance: !note.importance })
+      dispatch({ type: 'TOGGLE_IMPORTANCE', data: { ...toggledImportance } })
+    } else{
+      dispatch({ type: 'TOGGLE_IMPORTANCE', data: { ...note, important: !note.important } })
+    }
   }
 }
 export const toggleNotepad = () => {
