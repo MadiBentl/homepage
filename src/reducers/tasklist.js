@@ -69,7 +69,10 @@ export const toggleTask = (task) => {
 }
 export const deleteTask = (id) => {
   return async dispatch => {
-    await taskService.deleteTask(id)
+    const loggedInUser = window.localStorage.getItem('loggedInUser')
+    if (loggedInUser){
+      await taskService.deleteTask(id)
+    }
     dispatch({ type: 'DELETE_TASK', data: { id } })
   }
 }
