@@ -13,7 +13,7 @@ const Canvas = (props) => {
       console.log(image.day, currentDay)
       dispatch(setWallpaper())
     } else {
-      dispatch(loadWallPaper(window.localStorage.getItem('backgroundImageUrl')))
+      dispatch(loadWallPaper(window.localStorage.getItem('backgroundImageUrl'), window.localStorage.getItem('backgroundImageSrc')))
     }
   }, [dispatch])
 
