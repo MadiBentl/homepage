@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-const canvasReducer = (state = {}, action ) => {
+const getDay = () => {
+  let day = new Date()
+  return day.getDate()
+}
+const canvasReducer = (state = { day: getDay() }, action ) => {
   switch(action.type){
     case 'SET_WALLPAPER':
       return { ...state, img: action.data.img, source: action.data.source }

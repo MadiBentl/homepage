@@ -5,9 +5,14 @@ import { setWallpaper } from '../reducers/canvas'
 const Canvas = (props) => {
   const image = useSelector(state => state.canvas)
   const dispatch = useDispatch()
+  let currentDay = new Date()
+  currentDay = currentDay.getDate()
 
   useEffect(() => {
-    dispatch(setWallpaper())
+    if (image.day !== currentDay){
+      console.log(image.day, currentDay)
+      dispatch(setWallpaper())
+    }
   }, [dispatch])
 
   return (
