@@ -3,7 +3,7 @@ import noteService from '../services/notes'
 const generateTempId = () => Math.floor(Math.random() * 99999999)
 
 const initialState = {
-  notes: [{content: '', id: generateTempId(), important: false, location: {x:300, y:0}}],
+  notes: [{ content: '', id: generateTempId(), important: false, location: { x:300, y:0 } }],
   visible: false
 }
 const notepadReducer = (state = initialState, action) => {
