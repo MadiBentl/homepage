@@ -19,6 +19,7 @@ const Footer = (props) => {
       weather: state.weather.visible
     }
   })
+
   return (
     <div id='footer'>
       <div id='photo-source'>

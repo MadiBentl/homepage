@@ -17,9 +17,6 @@ const Canvas = (props) => {
     }
   }, [dispatch])
 
-  if (image.img){
-    window.localStorage.setItem('backgroundImageUrl', image.img)
-  }
   return (
     <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: 'gray' } }>
       {props.children}
