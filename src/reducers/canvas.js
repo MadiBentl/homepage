@@ -8,6 +8,9 @@ const canvasReducer = (state = { day: getDay() }, action ) => {
   switch(action.type){
     case 'SET_WALLPAPER':
       return { ...state, img: action.data.img, source: action.data.source }
+    case 'LOAD_WALLPAPER': {
+      return { ...state, img: action.data.url }
+    }
     default:
       return state
   }
@@ -24,6 +27,10 @@ export const setWallpaper = (keyword) => {
       dispatch({ type: 'SET_WALLPAPER', data: { img: response.data.urls.regular, source: response.data.user.username } } )
     }
   }
+}
+
+export const loadWallPaper = (url) => {
+  return({ type: 'LOAD_WALLPAPER', data: { url } })
 }
 
 export default canvasReducer

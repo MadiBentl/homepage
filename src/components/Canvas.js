@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setWallpaper } from '../reducers/canvas'
+import { setWallpaper, loadWallPaper } from '../reducers/canvas'
 
 const Canvas = (props) => {
   const image = useSelector(state => state.canvas)
@@ -9,12 +9,17 @@ const Canvas = (props) => {
   currentDay = currentDay.getDate()
 
   useEffect(() => {
-    if (image.day !== currentDay){
+    if (image.day !== currentDay || !window.localStorage.getItem('backgroundImageUrl')){
       console.log(image.day, currentDay)
       dispatch(setWallpaper())
+    } else {
+      dispatch(loadWallPaper(window.localStorage.getItem('backgroundImageUrl')))
     }
   }, [dispatch])
 
+  if (image.img){
+    window.localStorage.setItem('backgroundImageUrl', image.img)
+  }
   return (
     <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: 'gray' } }>
       {props.children}
