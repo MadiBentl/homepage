@@ -17,8 +17,10 @@ const Note = (props) => {
       x: props.note.location.x, y: props.note.location.y
     }
   })
+  const [zIndex, setZindex] = useState(0)
 
   const onStart = () => {
+    setZindex(zIndex + 1)
     setDragLocation({ ...dragLocation, activeDrags: ++dragLocation.activeDrags })
   }
 
@@ -49,7 +51,7 @@ const Note = (props) => {
       onDrag={onControlledDrag}
       bounds="body"
     >
-      <div className = 'ui card feature'>
+      <div className = 'ui card feature' style={{ zIndex: zIndex, color: 'red' }}  >
         <div className='content'>
           {props.canDeleteNote ?
             <i
