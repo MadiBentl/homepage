@@ -17,11 +17,11 @@ const Note = (props) => {
       x: props.note.location.x, y: props.note.location.y
     }
   })
-  const [zIndex, setZindex] = useState(0)
+  const zIndex = props.isFrontOfStack ? 1 : 0
 
   const onStart = () => {
-    setZindex(zIndex + 1)
     setDragLocation({ ...dragLocation, activeDrags: ++dragLocation.activeDrags })
+    props.handleNewFrontOfStack(props.note.id)
   }
 
   const onStop = () => {
@@ -46,7 +46,6 @@ const Note = (props) => {
   return(
     <Draggable
       {...dragHandlers}
-      handle="strong"
       position={dragLocation.controlledPosition}
       onDrag={onControlledDrag}
       bounds="body"
@@ -62,7 +61,6 @@ const Note = (props) => {
               className="disabled right floated window close outline large icon"
             ></i>
           }
-          <strong className="cursor"><i className="right floated hand rock outline icon large"></i></strong>
           <textarea
             value= {content}
             onChange={(event) => setContent(event.target.value)}
