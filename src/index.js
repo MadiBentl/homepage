@@ -7,9 +7,6 @@ import store from './store'
 
 import App from './App'
 
-
-console.log(store.getState())
-
 const renderApp = () => {
   ReactDOM.render(
     <Provider store={store}>

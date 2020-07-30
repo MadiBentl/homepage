@@ -20,7 +20,6 @@ const App = () => {
 
   useEffect(() => {
     const loggedInUser = window.localStorage.getItem('loggedInUser')
-    console.log('loggedInUser', loggedInUser)
     if (loggedInUser){
       const user = JSON.parse(loggedInUser)
       dispatch(setLogIn(user))

@@ -79,7 +79,6 @@ export const fetchNotes = (userId) => {
         return { ...n }
       }
     })
-    console.log(notes)
     dispatch({ type: 'GET_NOTES', data: { notes } })
   }
 }
