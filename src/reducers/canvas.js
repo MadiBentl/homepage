@@ -25,7 +25,6 @@ export const setWallpaper = (keyword) => {
       dispatch({ type: 'SET_WALLPAPER', data: { img: response.data.results[0].urls.regular, source: response.data.results[0].user.username } } )
     }else{
       const response = await axios.get(`https://api.unsplash.com/photos/random?client_id=${API_KEY}&orientation=landscape&collections=10860210`)
-      console.log(response)
       window.localStorage.setItem('backgroundImageUrl', response.data.urls.regular)
       window.localStorage.setItem('backgroundImageSrc', response.data.user.username)
       dispatch({ type: 'SET_WALLPAPER', data: { img: response.data.urls.regular, source: response.data.user.username } } )

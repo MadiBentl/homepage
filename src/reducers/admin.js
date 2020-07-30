@@ -1,5 +1,4 @@
 import loginService from '../services/admin'
-import noteService from '../services/notes'
 
 const adminReducer = (state = { user: null }, action ) => {
   switch(action.type){
@@ -14,21 +13,14 @@ const adminReducer = (state = { user: null }, action ) => {
   }
 }
 
-export const setLogIn = (userId, token) => {
+export const setLogIn = (userId) => {
   return async dispatch => {
     const users = await loginService.getUsers()
-    console.log('users', users)
     if (!users.some(user => user.googleId === userId )){
-      try{
-        const newUser = await loginService.addUser({ user: userId })
-        console.log(newUser)
-      }catch(err){
-        console.log(err)
-      }
+      await loginService.addUser({ user: userId })
     }
-    dispatch({ type: 'LOGIN', data: { userId, token } })
+    dispatch({ type: 'LOGIN', data: { userId } })
     window.localStorage.setItem('loggedInUser', JSON.stringify(userId))
-    noteService.setToken(token)
   }
 }
 export const setLogOut = () => {

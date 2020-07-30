@@ -10,7 +10,6 @@ const Login = () => {
 
   useEffect(() => {
     const handleAuthChange = (isSignedIn) => {
-      console.log('is signed in', isSignedIn)
       if (isSignedIn){
         dispatch(setLogIn(auth.currentUser.get().getId(), auth.currentUser.get().getAuthResponse().access_token))
       }else{
@@ -23,7 +22,6 @@ const Login = () => {
         scope: 'email'
       }).then(async() => {
         const googleAuth = await window.gapi.auth2.getAuthInstance()
-        console.log('googleAuth', googleAuth.currentUser.get().getAuthResponse().access_token)
         setAuth(googleAuth)
         if(auth){
           handleAuthChange(auth.isSignedIn.get())

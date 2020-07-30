@@ -59,10 +59,8 @@ export const toggleTask = (task) => {
     const loggedInUser = window.localStorage.getItem('loggedInUser')
     if (loggedInUser){
       const completedTask = await taskService.editTask(task, toggledTask)
-      console.log(completedTask)
       dispatch({ type: 'TOGGLE_TASK_STATUS', data:{ ...completedTask } })
     }else{
-      console.log(task)
       dispatch({ type: 'TOGGLE_TASK_STATUS', data: { ...toggledTask } })
     }
   }

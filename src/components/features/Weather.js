@@ -6,7 +6,6 @@ const Weather = () => {
   const weatherData = useSelector(state => state.weather)
   const dispatch = useDispatch()
 
-  console.log(weatherData)
   useEffect(() => {
     dispatch(getWeather())
   }, [])
@@ -20,7 +19,6 @@ const Weather = () => {
   }
 
   if (!weatherData.loaded){
-    console.log('loading...')
     return (
       <div className='feature little-feature'>
         <div className="ui segment">

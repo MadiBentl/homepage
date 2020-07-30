@@ -39,7 +39,6 @@ export const getWeather = () => {
 
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(async position => {
-        console.log(position)
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}`)
         dispatch({
           type: 'INIT_WEATHER',
@@ -55,11 +54,9 @@ export const toggleWeather = () => {
     const currentState = getState()
     console.log(currentState.weather.temperature)
     if (currentState.weather.temperature === undefined){
-      console.log('fetching weather')
       dispatch(getWeather())
     }
     else {
-      console.log('toggling')
       dispatch({ type: 'TOGGLE_WEATHER' })
     }
   }

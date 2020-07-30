@@ -10,7 +10,6 @@ const Canvas = (props) => {
 
   useEffect(() => {
     if (image.day !== currentDay || !window.localStorage.getItem('backgroundImageUrl')){
-      console.log(image.day, currentDay)
       dispatch(setWallpaper())
     } else {
       dispatch(loadWallPaper(window.localStorage.getItem('backgroundImageUrl'), window.localStorage.getItem('backgroundImageSrc')))
