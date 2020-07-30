@@ -1,20 +1,37 @@
 import axios from 'axios'
 const baseUrl = '/api/notes/'
 
+let token = null
+
+const setToken = newToken => {
+  token = `bearer ${newToken}`
+}
 const addNote = async(content) => {
-  const response = await axios.post(baseUrl, content)
+  const config = {
+    headers: { Authorization: token }
+  }
+  const response = await axios.post(baseUrl, content, config)
   return response.data
 }
 const deleteNote = async(id) => {
-  const response = await axios.delete(`${baseUrl}/${id}`)
+  const config = {
+    headers: { Authorization: token }
+  }
+  const response = await axios.delete(`${baseUrl}/${id}`, config)
   return response.data
 }
 const editNote = async(blog) => {
-  const response = await axios.put(`${baseUrl}${blog.id}`, blog)
+  const config = {
+    headers: { Authorization: token }
+  }
+  const response = await axios.put(`${baseUrl}${blog.id}`, blog, config)
   return response.data
 }
 const getNotes = async() => {
-  const response = await axios.get(baseUrl)
+  const config = {
+    headers: { Authorization: token }
+  }
+  const response = await axios.get(baseUrl, config)
   return response.data
 }
-export default { getNotes, addNote, editNote, deleteNote }
+export default { getNotes, addNote, editNote, deleteNote, setToken }

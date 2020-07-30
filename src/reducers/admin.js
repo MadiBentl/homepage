@@ -1,11 +1,12 @@
 import loginService from '../services/admin'
+import noteService from '../services/notes'
 
 const adminReducer = (state = { user: null }, action ) => {
   switch(action.type){
     case 'LOGIN':
-      return { ...state, user: true, userId: action.data.userId }
+      return { ...state, token: action.data.token, user: true, userId: action.data.userId }
     case 'LOGOUT':
-      return { ...state, user: false }
+      return { ...state, token: null, user: false }
     case 'GET_DAY':
       return { ...state, today: new Date().toDateString() }
     default:
@@ -13,7 +14,7 @@ const adminReducer = (state = { user: null }, action ) => {
   }
 }
 
-export const setLogIn = (userId) => {
+export const setLogIn = (userId, token) => {
   return async dispatch => {
     const users = await loginService.getUsers()
     console.log('users', users)
@@ -25,8 +26,9 @@ export const setLogIn = (userId) => {
         console.log(err)
       }
     }
-    dispatch({ type: 'LOGIN', data: { userId } })
+    dispatch({ type: 'LOGIN', data: { userId, token } })
     window.localStorage.setItem('loggedInUser', JSON.stringify(userId))
+    noteService.setToken(token)
   }
 }
 export const setLogOut = () => {
