@@ -37,27 +37,21 @@ const SettingsModal = () => {
               </div>
             </div>
             <div className='item'>
-              <div className="ui toggle checkbox " >
+              <div className="ui toggle checkbox" >
                 <input type="checkbox" name="public" onChange={() => handleFahrenheitToggle()} checked={isCelsius}/>
                 <label>View temperature in Celsius</label>
               </div>
             </div>
             <div className='item'>
-              <div className='ui toggle checkbox'>
-                <input type="checkbox" name="public" />
-                <label>Enable High Visibility Mode</label>
+              <div className='ui toggle checkbox disabled'>
+                <input type="checkbox" name="public" disabled="disabled"/>
+                <label>Enable High Visibility Mode (Coming soon!)</label>
               </div>
             </div>
             <div className='item'>
-              <div className='ui toggle checkbox'>
-                <input type="checkbox" name="public" />
-                <label>Enable Dark Mode</label>
-              </div>
-            </div>
-            <div className='item'>
-              <div className='ui toggle checkbox'>
-                <input type="checkbox" name="public" disabled={isLoggedIn ? '' : 'disabled'}/>
-                <label>Save your dashboard {isLoggedIn ? '':'requires log in'}</label>
+              <div className='ui toggle checkbox disabled'>
+                <input type="checkbox" name="public" disabled="disabled"/>
+                <label>Enable Dark Mode (Coming Soon!)</label>
               </div>
             </div>
           </div>

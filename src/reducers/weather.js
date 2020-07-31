@@ -52,7 +52,6 @@ export const getWeather = () => {
 export const toggleWeather = () => {
   return (dispatch, getState) => {
     const currentState = getState()
-    console.log(currentState.weather.temperature)
     if (currentState.weather.temperature === undefined){
       dispatch(getWeather())
     }

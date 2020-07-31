@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchNotes } from '../../reducers/notepad'
 import Note from './Note'
 
-
 const Notepad = () => {
   const dispatch = useDispatch()
   const notepadData = useSelector(state => state.notepad)
@@ -14,7 +13,7 @@ const Notepad = () => {
     if (user){
       dispatch(fetchNotes())
     }
-  }, [user, notepadData.visible])
+  }, [user, notepadData.visible, dispatch])
 
   const canAddMoreNotes = notepadData.notes.length < 4 ? true : false
   const canDeleteNote = notepadData.notes.length === 1 ? false : true

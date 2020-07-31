@@ -14,7 +14,7 @@ const Canvas = (props) => {
     } else {
       dispatch(loadWallPaper(window.localStorage.getItem('backgroundImageUrl'), window.localStorage.getItem('backgroundImageSrc')))
     }
-  }, [dispatch])
+  }, [dispatch, currentDay, image.day])
 
   return (
     <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: 'gray' } }>

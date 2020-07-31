@@ -8,7 +8,7 @@ const Weather = () => {
 
   useEffect(() => {
     dispatch(getWeather())
-  }, [])
+  }, [dispatch])
 
   const tempToDisplay = () => {
     if (weatherData.celsius){

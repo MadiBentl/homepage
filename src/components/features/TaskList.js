@@ -53,11 +53,11 @@ const TaskList = () => {
     if(loggedIn){
       dispatch(fetchTasks(loggedIn))
     }
-  }, [loggedIn, taskData.visible])
+  }, [loggedIn, taskData.visible, dispatch])
 
   useEffect(() => {
     wrapper.current.classList.toggle('is-open')
-  }, [taskData.visible])
+  }, [taskData.visible, dispatch])
 
   return(
     <div className='ui card tasklist is-open' ref={wrapper}>
