@@ -8,7 +8,6 @@ import Login from './Login'
 const SettingsModal = () => {
   const dispatch = useDispatch()
   const visible = useSelector(state => state.settings.visible)
-  const isLoggedIn = useSelector(state => state.admin.user)
   const [isCelsius, setIsCelsius] = useState(true)
 
   const handleFahrenheitToggle = () => {

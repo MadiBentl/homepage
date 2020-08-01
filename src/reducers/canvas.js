@@ -4,7 +4,7 @@ const getDay = () => {
   let day = new Date()
   return day.getDate()
 }
-const canvasReducer = (state = { day: getDay() }, action ) => {
+const canvasReducer = (state = {}, action ) => {
   switch(action.type){
     case 'SET_WALLPAPER':
       return { ...state, img: action.data.img, source: action.data.source }
@@ -27,6 +27,7 @@ export const setWallpaper = (keyword) => {
       const response = await axios.get(`https://api.unsplash.com/photos/random?client_id=${API_KEY}&orientation=landscape&collections=10860210`)
       window.localStorage.setItem('backgroundImageUrl', response.data.urls.regular)
       window.localStorage.setItem('backgroundImageSrc', response.data.user.username)
+      window.localStorage.setItem('backgroundImageDay', getDay())
       dispatch({ type: 'SET_WALLPAPER', data: { img: response.data.urls.regular, source: response.data.user.username } } )
     }
   }

@@ -7,14 +7,17 @@ const Canvas = (props) => {
   const dispatch = useDispatch()
   let currentDay = new Date()
   currentDay = currentDay.getDate()
+  const dayOnFile = Number(window.localStorage.getItem('backgroundImageDay'))
+
 
   useEffect(() => {
-    if (image.day !== currentDay || !window.localStorage.getItem('backgroundImageUrl')){
+    console.log(dayOnFile, currentDay)
+    if (dayOnFile !== currentDay || !window.localStorage.getItem('backgroundImageUrl')){
       dispatch(setWallpaper())
     } else {
       dispatch(loadWallPaper(window.localStorage.getItem('backgroundImageUrl'), window.localStorage.getItem('backgroundImageSrc')))
     }
-  }, [dispatch, currentDay, image.day])
+  }, [dispatch, currentDay])
 
   return (
     <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: 'gray' } }>
