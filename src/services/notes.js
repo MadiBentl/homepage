@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = '/api/notes/'
+const baseUrl = 'http://localhost:3001/api/notes/'
 
 const addNote = async(content) => {
   const response = await axios.post(baseUrl, content)

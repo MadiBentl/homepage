@@ -11,13 +11,12 @@ const Canvas = (props) => {
 
 
   useEffect(() => {
-    console.log(dayOnFile, currentDay)
     if (dayOnFile !== currentDay || !window.localStorage.getItem('backgroundImageUrl')){
       dispatch(setWallpaper())
     } else {
       dispatch(loadWallPaper(window.localStorage.getItem('backgroundImageUrl'), window.localStorage.getItem('backgroundImageSrc')))
     }
-  }, [dispatch, currentDay])
+  }, [dispatch, currentDay, dayOnFile])
 
   return (
     <div className='canvas lazy-bg' style={{ backgroundImage : `url(${image.img})`, backgroundColor: 'gray' } }>

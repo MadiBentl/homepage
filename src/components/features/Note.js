@@ -50,7 +50,7 @@ const Note = (props) => {
       onDrag={onControlledDrag}
       bounds="body"
     >
-      <div className = 'ui card feature' style={{ zIndex: zIndex, color: 'red' }}  >
+      <div className = 'ui card feature' style={{ zIndex: zIndex }}  >
         <div className='content'>
           {props.canDeleteNote ?
             <i
